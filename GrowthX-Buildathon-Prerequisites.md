@@ -1,122 +1,150 @@
 # GrowthX Buildathon — Laptop Setup
 
-**Do this BEFORE you arrive (about 15 minutes)**
+> **Do this _before_ you arrive — about 15 minutes.**
+> The event is 3 hours of *building*, not installing. If your laptop is ready the night before, you can start the moment you sit down. Stuck on a step? Come 15 minutes early and a mentor will help.
 
-The event is 3 hours of building, not installing. If your laptop is set up the night before, you can start building right away. If you get stuck on any step, come 15 minutes early and a mentor will help you finish.
+---
 
-## Before you start, you'll need
+## What you'll need
 
-- A laptop (Windows or Mac) where you can install software (admin rights).
-- An AI subscription you can log in to — either:
-  - **Claude Pro or Max** (recommended — powers "Claude Code"), OR
-  - **ChatGPT Plus/Pro** (powers "Codex")
-- About 15 minutes.
+- A **laptop** (Windows or Mac) where you can install software (admin rights).
+- An **AI subscription** you can log in to — one of:
+  - **Claude Pro / Max** — *recommended* (powers **Claude Code**)
+  - **ChatGPT Plus / Pro** (powers **Codex**)
+- About **15 minutes**.
 
+You'll set up five things, in order:
 
-## Step 1 — Install Node.js (required)
+**Node.js → an IDE → your AI tool → Python → Git**
 
-*Why: your AI tools (Claude Code / Codex) are installed and run through Node.js.*
+---
+
+## Step 1 — Install Node.js
+
+> Your AI tool is installed and runs through Node.js.
 
 **Windows**
-- Easiest: go to https://nodejs.org → download the **LTS** version → run the installer → keep clicking Next → Finish.
-- Or, in a terminal:
+1. Go to **[nodejs.org](https://nodejs.org)** and download the **LTS** version.
+2. Run the installer and click through (Next → Next → Finish).
+
+Prefer the terminal?
 ```powershell
 winget install OpenJS.NodeJS.LTS
 ```
 
 **macOS**
-- Easiest: go to https://nodejs.org → download the macOS **LTS** → run the .pkg installer.
-- Or, if you have Homebrew:
+1. Go to **[nodejs.org](https://nodejs.org)** and download the **macOS LTS** (`.pkg`).
+2. Run the installer.
+
+Have [Homebrew](https://brew.sh)?
 ```bash
 brew install node
 ```
 
+---
+
 ## Step 2 — Install an IDE (your workspace)
 
-*An IDE is the app where you'll see your files and run commands. It has a built-in "terminal" you'll use in the next step. Pick ONE (Windows & macOS versions on each site):*
+> An IDE is the app where you'll see your files and run commands. It has a built-in **terminal** you'll use in the next step.
 
-- **VS Code** (recommended — free, simple, works everywhere): https://code.visualstudio.com
-- **Google Antigravity** (an AI-first IDE): https://antigravity.google
-- **Cursor** (an AI-first IDE): https://cursor.com
+Pick **one** (each site has Windows & macOS downloads):
 
-*Not sure? Choose VS Code. (Antigravity and Cursor are also built on VS Code, so the steps below are the same. They have their own built-in AI, but for this build we'll use Claude Code in the terminal — same for everyone.)*
+| IDE | Notes |
+|-----|-------|
+| **[VS Code](https://code.visualstudio.com)** | Recommended — free, simple, works everywhere |
+| **[Google Antigravity](https://antigravity.google)** | AI-first IDE |
+| **[Cursor](https://cursor.com)** | AI-first IDE |
 
-**Download your chosen IDE, install it, and open it.**
+> Not sure? **Choose VS Code.** Antigravity and Cursor are also built on VS Code, so the steps below are identical. (They have their own built-in AI, but for this build everyone uses Claude Code in the terminal.)
 
-## Step 3 — Open the IDE's terminal and install your AI tool
+Download your chosen IDE, install it, and **open it**.
 
-**Open the built-in terminal inside your IDE:**
-- Top menu → Terminal → New Terminal
-- …or press **Ctrl + `** on Windows / **Cmd + `** on macOS (the key above Tab).
+---
 
-A terminal panel opens at the bottom of the IDE. Type the command for your tool there:
+## Step 3 — Install your AI tool (in the IDE terminal)
 
-**Claude Code (recommended):**
+**1. Open the built-in terminal** inside your IDE:
+- Menu: **Terminal → New Terminal**, or
+- Shortcut: **Ctrl + `** (Windows) / **Cmd + `** (macOS) — the key above Tab.
+
+A terminal panel opens at the bottom. **2. Type the command for your tool:**
+
+**Claude Code** (recommended)
 ```bash
 npm install -g @anthropic-ai/claude-code
 ```
 
-**Codex (alternative):**
+**Codex** (alternative)
 ```bash
 npm install -g @openai/codex
 ```
 
-*Tip: if it says "npm is not recognized", close the IDE and open it again after installing Node (Step 1), then reopen the terminal.*
+> If it says **"npm is not recognized"**, close the IDE and reopen it (so it picks up Node from Step 1), then open the terminal again.
+
+---
 
 ## Step 4 — Log in to your AI tool
 
-In the same IDE terminal, log in.
+In the same terminal:
 
-**Claude Code:**
+**Claude Code** — run `claude`, then sign in with your Claude account in the browser window that opens. Type `/exit` when done.
 ```bash
 claude
 ```
-- A browser window opens — sign in with your Claude account. When it's done, type `/exit` to leave.
 
-**Codex:**
+**Codex**
 ```bash
 codex login
 ```
 
-## Step 5 — Install Python (for the Python path)
+---
 
-*Why: the default build uses Python. (If you plan to build in JavaScript instead, Node from Step 1 is enough — you can skip this step.)*
+## Step 5 — Install Python
+
+> The default build uses Python. *Building in JavaScript instead? Node from Step 1 is enough — skip this step.*
 
 **Windows**
-- Go to https://www.python.org/downloads/ → Download Python.
-- Run the installer. **IMPORTANT: tick "Add Python to PATH"** at the bottom, then click Install Now.
+1. Go to **[python.org/downloads](https://www.python.org/downloads/)** and download Python.
+2. Run the installer — **tick "Add Python to PATH"** at the bottom — then click **Install Now**.
 
 **macOS**
-- Go to https://www.python.org/downloads/ → download the macOS installer → run it.
-- Or, with Homebrew:
+1. Go to **[python.org/downloads](https://www.python.org/downloads/)** and run the macOS installer.
+
+Have Homebrew?
 ```bash
 brew install python
 ```
 
-## Step 6 — Install Git (to save your progress)
+---
 
-*Why: during the build you'll "checkpoint" your work so you never lose it. Git makes that possible.*
+## Step 6 — Install Git
+
+> During the build you'll "checkpoint" your work so you never lose it. Git makes that possible.
 
 **Windows**
-- Go to https://git-scm.com/download/win → download → run the installer → accept the defaults.
-- Or, in a terminal:
+1. Go to **[git-scm.com/download/win](https://git-scm.com/download/win)**, download, and run the installer (accept the defaults).
+
+Prefer the terminal?
 ```powershell
 winget install Git.Git
 ```
 
 **macOS**
-- In the terminal, type the line below. If Git isn't installed, macOS pops up an "Install" button — click it.
+1. Run the line below. If Git isn't installed, macOS pops up an **Install** button — click it.
 ```bash
 git --version
 ```
-- Or, with Homebrew:
+
+Have Homebrew?
 ```bash
 brew install git
 ```
 
+---
+
 ## Step 7 — Verify everything works
 
-In your IDE terminal, run these. Each should print a version (or a reply) — not an error.
+In your IDE terminal, run these — each should print a version, not an error:
 
 **Windows**
 ```powershell
@@ -134,25 +162,25 @@ git --version
 claude --version
 ```
 
-*(Codex users: use `codex --version` instead of `claude --version`.)*
+> Codex users: use `codex --version` instead of `claude --version`.
 
-**Final test — check your AI tool can actually answer:**
+**Final test — can your AI tool answer?**
 
-Claude Code:
 ```bash
 claude -p "say hello in one word"
 ```
-
 Codex:
 ```bash
 echo "say hello in one word" | codex exec -
 ```
 
-**If you get a one-word reply back, you are 100% ready for the build.**
+✅ **A one-word reply means you're ready for the build.**
+
+---
 
 ## If something goes wrong
 
-- "...is not recognized" / "command not found" → close your IDE and open it again (so the terminal picks up the new install), then try again.
-- On Windows, if Python is still not found → reinstall it and make sure you tick "Add Python to PATH".
-- Login problems → run `claude` (or `codex login`) again and finish the sign-in in your browser.
-- Still stuck? Come 15 minutes early on event day — a mentor will get you set up quickly.
+- **"not recognized" / "command not found"** → close your IDE and reopen it (the terminal picks up new installs), then try again.
+- **Windows: Python still not found** → reinstall it and make sure **"Add Python to PATH"** is ticked.
+- **Login problems** → run `claude` (or `codex login`) again and finish the browser sign-in.
+- **Still stuck?** Come 15 minutes early on event day — a mentor will get you set up quickly.
