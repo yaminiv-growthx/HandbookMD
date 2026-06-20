@@ -1,8 +1,38 @@
 # What Your Twin Can Do
 
-Your AI twin runs on one brain (`claude -p`, no API key) with four plug-in modules: **Slack**, **Gmail (email)**, a **Scheduler (cronjobs)**, and **long-term Memory**. First put it on Slack so it can act in a real chat — then add the capabilities those modules unlock. Everything happens in *your voice* (from your `PERSONALITY.md`).
+You've built a twin that chats in your voice. Now you can **grow it** — put it on **Slack**, and add capabilities like **email drafting**, a **scheduler**, and **long-term memory**. It all runs on the one brain you already have (`claude -p`, no API key) and stays in *your voice* (from `PERSONA.md`).
 
 Pick what excites you and build it — these are starting points, not a checklist.
+
+> 🎁 **Everything in this section is bonus.** Your core agent already chats and remembers — that's demoable on its own. Add a chat platform and a capability only if you have time.
+
+## 🧩 How a capability works — Claude Code Skills
+
+Each capability is a **Claude Code Skill**: a small `SKILL.md` file your agent reads automatically. You don't wire it into your main loop — Claude Code triggers the right skill when a request matches it.
+
+To add one:
+
+1. Make a folder `.claude/skills/<capability-name>/` with a `SKILL.md` inside.
+2. Give `SKILL.md` frontmatter — a **name** and a **description that says *when* to trigger it** (e.g. *"when the user asks to summarize a channel"*).
+3. Below that, write the instructions: what to do, and any tiny helper command to run (a small CLI script the agent calls from the terminal).
+4. Don't hand-write it — **ask your agent in your own words** to build the skill; let it create the `SKILL.md` (and any helper script).
+
+> 💡 Because the agent loads `.claude/skills` automatically, every skill works on **all** its faces — terminal, Slack, scheduler.
+
+> ⚙️ The **Memory** engine and **Slack** library are Node packages — so memory + Slack run on the **Node.js** path. (Python is fine for the core chat and most else.)
+
+## ⭐ Easiest first capability — a `/reply` command
+
+Before the bigger stuff, add this one — it's quick and genuinely useful: a **slash command** that drafts a reply *in your voice* to any message you paste. (It's a Claude Code command, so it works the same whatever language you chose.)
+
+Ask your AI to **create a `/reply` command** — a file `.claude/commands/reply.md` — that takes a message and drafts a reply in your voice from `PERSONA.md`, outputting just the reply text.
+
+💻 **RUN** (or, inside `claude`, just type `/reply <message>`)
+```bash
+claude -p "/reply Hi, are we still on for the call Thursday at 3? - Sam"
+```
+
+You get back a ready-to-send draft that sounds like you. 🎉 A real capability, built in about two minutes.
 
 ## 🚀 Go live — put it on Slack
 
@@ -51,7 +81,7 @@ node slack_bot.js
 
 6. In Slack, find your app under **Apps** and **DM it**. You should get a reply in your voice. 🎉
 
-> 🛟 Something breaks? Copy the error, paste it to Claude, and do what it says.
+> 🛟 Something breaks? Copy the error, paste it to Claude, and do what it says. Stuck on Slack specifically? Compare with the working reference build: [github.com/luvishg-growthx/buildathon-build-your-personal-ai-agent](https://github.com/luvishg-growthx/buildathon-build-your-personal-ai-agent)
 
 ### Discord (optional · 🚧 draft)
 
@@ -63,6 +93,8 @@ node slack_bot.js
 4. Ask your AI to write a Discord bot that reads `discord_token.txt` and replies on a DM or mention, then run it (`pip install discord.py` → `python discord_bot.py`, or `npm install discord.js` → `node discord_bot.js`).
 
 > 💡 Both bots use the **same brain** — so every capability below works on whichever platform you connect.
+
+> 🎯 **For today, pick just ONE simple capability** and get it working. The full menu below is your **roadmap for after the event** — don't try to build it all in 3 hours.
 
 ## 💬 Slack
 
@@ -87,6 +119,8 @@ node slack_bot.js
 13. **Schedule a meeting / calendar event** — "set up a Google Meet with Sam tomorrow at 4pm" — creates the calendar event at the given time *(uses the Google Calendar connector, web-authed like Gmail)*.
 
 ## 🧠 Memory
+
+> You already built **basic** memory in the build (saving the chat). This is the **level-up**: durable, *searchable* long-term memory — e.g. via the open-source **engram** engine — that recalls the right past detail automatically.
 
 14. **Remember what you tell it** — facts, preferences, people, decisions — saved durably and recalled across restarts.
 15. **Recall relevant context automatically** — before every answer it pulls the most relevant past memories, so it never starts cold.

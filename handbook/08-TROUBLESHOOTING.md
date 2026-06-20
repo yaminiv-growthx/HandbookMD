@@ -29,4 +29,6 @@ Switch to Sonnet — type **`/model sonnet`** — and keep test messages short. 
 
 **Doesn't sound like you?** That's not a bug — open the **Demo** step and tune the personality.
 
+**Compare with a working build.** If you're really stuck — especially on Slack — open the reference build and borrow what you need: [github.com/luvishg-growthx/buildathon-build-your-personal-ai-agent](https://github.com/luvishg-growthx/buildathon-build-your-personal-ai-agent)
+
 **Still stuck?** Grab a volunteer. 🙂

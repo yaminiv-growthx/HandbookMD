@@ -10,10 +10,10 @@ Decide **who your agent is** — its voice, its humor, how it texts. No code in 
 2. Give it the **`IDEATION.md`** rules — copy or download them from the Starter Files box above and paste them into the chat.
 3. Tell it: **"I'm building a personal AI agent that chats like me. Interview me."** No script needed — that one line kicks it off.
 4. It walks you through **about 10 quick questions, one at a time** — how you text (tone, language, emojis, greetings, humor, boundaries, topics). Each is a tick-box: put an `x` in the brackets next to what fits you and send it back. Leave one unsure and it picks a sensible default.
-5. It writes you a **`PERSONALITY.md`**. Save it into your `my-twin` folder.
+5. It writes you a **`PERSONA.md`** — your voice in one file. Save it into your `my-twin` folder.
 6. It suggests a few **names** — pick one. You should walk out knowing your agent's name.
 7. Confirm your **language:** Python (default, easiest) or JavaScript.
 
 > 💡 The name matters — you'll introduce your agent by name when you demo it on stage.
 
-When you have a saved `PERSONALITY.md`, a name, and a language, you're ready to build.
+When you have a saved `PERSONA.md`, a name, and a language, you're ready to build.

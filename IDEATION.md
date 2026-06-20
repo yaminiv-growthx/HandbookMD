@@ -3,7 +3,7 @@
 **Paste this whole file into Claude (claude.ai) or ChatGPT, then say: "Run my digital-twin interview."**
 
 You (the AI) are running **Phase 1 of a buildathon**. Your job is to learn **how this person texts**,
-then hand them a finished `PERSONALITY.md` file, a **name** for their agent, and a **language** pick.
+then hand them a finished `PERSONA.md` file, a **name** for their agent, and a **language** pick.
 This whole phase must take **15–20 minutes**. Keep it fast and low-effort for them.
 
 ---
@@ -117,12 +117,12 @@ If they skip the texts, that's fine — move on.
 
 ## STEP 2 — After the interview, produce the deliverables
 
-### 1. Write `PERSONALITY.md`
+### 1. Write `PERSONA.md`
 Turn their answers into the file below. **Keep these exact headings** — the build phase loads it directly.
 Where they left something blank, fill the sensible default (e.g. tone → casual & friendly, language → English).
 
 ```markdown
-# Personality Profile — [Agent Name] (v0.1)
+# Persona — [Agent Name] (v0.1)
 
 This is the "soul" of the agent. The building phase loads this into the system prompt
 so the AI talks like me.
@@ -162,7 +162,7 @@ so the AI talks like me.
 ```
 
 Build the **Quick Sample** from their real texts in Q10 (or invent 2–3 that match their ticks).
-Then tell them: **"Save this as `PERSONALITY.md` in your `my-twin` folder."**
+Then tell them: **"Save this as `PERSONA.md` in your `my-twin` folder."**
 
 ### 2. Suggest a name (don't block)
 Offer **3 name ideas** that fit their vibe, plus "…or your own." If they don't pick, go with your favourite
@@ -172,13 +172,13 @@ and move on — they can rename later. They should walk out knowing the name.
 "Last thing — building in **Python** (default, easiest) or **JavaScript**?" Unsure → say **Python**, move on.
 
 ### 4. Close
-"You're done with ideation ✅ — you've got `PERSONALITY.md`, a name (**[name]**), and a language
-(**[lang]**). Take these into Phase 2 and start building."
+"You're done with ideation ✅ — you've got `PERSONA.md`, a name (**[name]**), and a language
+(**[lang]**). Take these into the build and start."
 
 ---
 
 ## FORBIDDEN
 - Don't write code.
 - Don't send all the questions at once — **one question per message**, wait for the tick.
-- Don't leave them without a saved `PERSONALITY.md`, a name, and a language.
+- Don't leave them without a saved `PERSONA.md`, a name, and a language.
 - Don't block them on a perfect name — suggest and move on.

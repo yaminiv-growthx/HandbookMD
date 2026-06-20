@@ -2,15 +2,17 @@
 
 Now you're in **Claude Code** (the terminal). Three small steps. **You write the prompts yourself** — figuring out what to ask for *is* the building. After each step: test it, then type `checkpoint` and hit Enter to save.
 
+> ⭐ **This is your core win.** Finish these three steps and you have a real agent — one that chats like you and remembers — ready to demo. Slack and capabilities (next) are bonuses; this is the part to nail.
+
 **Kickoff — paste this once to start** (in Claude Code, inside your `my-twin` folder):
 
 📋 **PROMPT**
 ```
-Read BUILDING.md and PERSONALITY.md in this folder, and follow BUILDING.md as your rules
+Read BUILDING.md and PERSONA.md in this folder, and follow BUILDING.md as your rules
 for this whole session.
 
 I'm building my personal AI agent — a digital twin that chats in my voice (described in
-PERSONALITY.md). Its brain must be the claude -p CLI I'm already signed into — no API key.
+PERSONA.md). Its brain must be the claude -p CLI I'm already signed into — no API key.
 
 Build everything in ONE language — Python (file named core.py) OR Node.js (core.js).
 Pick one, keep the same file names throughout, and don't rename files later.
@@ -29,7 +31,7 @@ Start with Iteration 0 from BUILDING.md: plan it first, then build.
 A read-and-answer loop you run in the terminal. Your kickoff prompt already starts this — make sure what Claude builds does all of these:
 
 1. You run it from the terminal.
-2. It reads your `PERSONALITY.md`.
+2. It reads your `PERSONA.md`.
 3. It loops: waits for you to type a message → prints a reply in your voice (via `claude -p`) → waits for the next one.
 4. It exits when you press **Ctrl+C**.
 
@@ -38,7 +40,7 @@ A read-and-answer loop you run in the terminal. Your kickoff prompt already star
 📋 **PROMPT**
 ```
 Build a small Python program in a file named core.py that I run from the terminal.
-It reads my PERSONALITY.md, then loops: waits for me to type a message, sends my personality
+It reads my PERSONA.md, then loops: waits for me to type a message, sends my personality
 + my message to the claude -p CLI (as a subprocess), prints the reply in my voice, then waits
 for the next message. It exits on Ctrl+C. No API key — use claude -p. Plan it first, then build.
 ```
@@ -47,7 +49,7 @@ for the next message. It exits on Ctrl+C. No API key — use claude -p. Plan it 
 📋 **PROMPT**
 ```
 Build a small Node.js program in a file named core.js that I run from the terminal.
-It reads my PERSONALITY.md, then loops: waits for me to type a message, sends my personality
+It reads my PERSONA.md, then loops: waits for me to type a message, sends my personality
 + my message to the claude -p CLI (via child_process), prints the reply in my voice, then waits
 for the next message. It exits on Ctrl+C. No API key — use claude -p. Plan it first, then build.
 ```

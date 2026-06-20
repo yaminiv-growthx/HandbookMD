@@ -10,6 +10,16 @@ This is a real build, not a copy-paste tutorial. Parts of it will feel confusing
 
 ## How the day runs
 
-**Kickoff → Build → Demo.** We get everyone set up, you build through a few short phases at your own pace, and we close with everyone showing what they made.
+**Kickoff → Build → Demo**, at your own pace. Rough timing for the 3 hours:
 
-One thing before you come: do the quick setup in **Before You Arrive** tonight. It saves your first hour for building instead of installing.
+| Time | Step | Priority |
+|------|------|----------|
+| ~15 min | Ideation — define your agent | core |
+| ~60 min | Build — it chats in your voice, then remembers | ⭐ core |
+| ~30 min | Go live on Slack | bonus |
+| ~25 min | Add a capability | bonus |
+| ~15 min | Polish + demo | core |
+
+**Do the core first** — an agent that chats like you and remembers. Finish that and you've built something real to demo. Slack and capabilities are bonuses; reach for them if you have time.
+
+One thing before you come: do the quick setup in **Before You Arrive** tonight — it saves your first hour for building instead of installing.
