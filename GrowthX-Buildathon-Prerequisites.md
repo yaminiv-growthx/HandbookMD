@@ -43,7 +43,7 @@ brew install node
 
 ---
 
-## Step 2 — Install an IDE (your workspace)
+## Step 2 — Install your Code-Editor (your workspace)
 
 > An IDE is the app where you'll see your files and run commands. It has a built-in **terminal** you'll use in the next step.
 
