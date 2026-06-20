@@ -27,6 +27,6 @@ Switch to Sonnet — type **`/model sonnet`** — and keep test messages short. 
 
 ---
 
-**Doesn't sound like you?** That's not a bug — open **Phase 5** and tune the personality.
+**Doesn't sound like you?** That's not a bug — open the **Demo** step and tune the personality.
 
 **Still stuck?** Grab a volunteer. 🙂

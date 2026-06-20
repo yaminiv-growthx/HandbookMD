@@ -1,4 +1,4 @@
-# Phase 5 — Demo (≈15 min)
+# Demo
 
 You've built a real agent. Last step: make it presentable, then show it on stage.
 

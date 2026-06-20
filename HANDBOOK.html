@@ -1,0 +1,1748 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrowthX Buildathon · Build Your Own Personal AI Agent</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=JetBrains+Mono:wght@500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f5f3ef;
+            --white: #fff;
+            --ink: #1c1917;
+            --mid: #44403c;
+            --faint: #78716c;
+            --line: rgba(0, 0, 0, .08);
+            --blue: #2563eb;
+            --blue-bg: #dbeafe;
+            --blue-l: #eff6ff;
+            --green: #16a34a;
+            --green-bg: #dcfce7;
+            --purple: #7c3aed;
+            --purple-bg: #ede9fe;
+            --amber: #d97706;
+            --amber-bg: #fef3c7;
+            --red: #dc2626;
+            --red-bg: #fee2e2;
+            --user: #d4845a;
+            --ringg: #3a6bb5;
+            --back: #a8a29e
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--ink);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 16px;
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased
+        }
+
+        .page {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 32px 32px 80px
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        .anim {
+            animation: fadeIn .35s ease
+        }
+
+        /* intro */
+        .intro-label {
+            font-size: 12px;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+            color: var(--blue);
+            font-weight: 600
+        }
+
+        .intro h1 {
+            font-family: 'Instrument Serif', serif;
+            font-weight: 400;
+            font-size: clamp(26px, 4vw, 38px);
+            line-height: 1.1;
+            margin: 8px 0 6px
+        }
+
+        .intro>p {
+            color: var(--mid);
+            font-size: 15px;
+            max-width: 680px;
+            margin-bottom: 24px
+        }
+
+        .sv {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 36px
+        }
+
+        @media(max-width:720px) {
+            .sv {
+                grid-template-columns: 1fr
+            }
+        }
+
+        .sv-s {
+            background: var(--blue-l);
+            border: 1.5px solid var(--blue);
+            border-radius: 14px;
+            padding: 20px 20px 18px
+        }
+
+        .sv-s .n {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--blue);
+            line-height: 1
+        }
+
+        .sv-s .t {
+            font-size: 15px;
+            font-weight: 600;
+            margin-top: 6px
+        }
+
+        .sv-s .d {
+            font-size: 13px;
+            color: var(--mid);
+            margin-top: 4px;
+            line-height: 1.5
+        }
+
+        /* problem cards */
+        .prob-h {
+            font-family: 'Instrument Serif', serif;
+            font-weight: 400;
+            font-size: 26px;
+            margin-bottom: 16px
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px
+        }
+
+        .pcard {
+            background: var(--white);
+            border: 1.5px solid var(--line);
+            border-radius: 16px;
+            padding: 24px 26px;
+            transition: .2s;
+            display: flex;
+            flex-direction: column
+        }
+
+        .pcard:hover {
+            border-color: var(--blue)
+        }
+
+        .pcard h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 2px
+        }
+
+        .pcard .tag {
+            font-size: 13px;
+            color: var(--blue);
+            font-weight: 500;
+            margin-bottom: 14px
+        }
+
+        .pcard-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px 24px;
+            margin-bottom: 16px
+        }
+
+        @media(max-width:700px) {
+            .pcard-grid {
+                grid-template-columns: 1fr
+            }
+        }
+
+        .pcard-sec h4 {
+            font-size: 12px;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--faint);
+            font-weight: 600;
+            margin-bottom: 5px
+        }
+
+        .pcard-sec p {
+            font-size: 13.5px;
+            color: var(--mid);
+            line-height: 1.55
+        }
+
+        .pcard-sec ul {
+            list-style: none;
+            font-size: 13px;
+            color: var(--mid);
+            line-height: 1.7
+        }
+
+        .pcard-sec ul li::before {
+            content: "→ ";
+            color: var(--blue);
+            font-weight: 600
+        }
+
+        .open-btn {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            background: var(--blue);
+            border: 0;
+            border-radius: 10px;
+            padding: 11px 24px;
+            cursor: pointer;
+            color: var(--white);
+            transition: .15s
+        }
+
+        .open-btn:hover {
+            background: #1d4ed8
+        }
+
+        /* detail view */
+        .detail {
+            display: none
+        }
+
+        .detail.active {
+            display: block
+        }
+
+        .cat-pill {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            background: var(--white);
+            border: 1.5px solid var(--line);
+            border-radius: 99px;
+            padding: 8px 18px;
+            cursor: pointer;
+            color: var(--mid);
+            transition: .2s
+        }
+
+        .cat-pill:hover {
+            border-color: var(--blue);
+            color: var(--blue)
+        }
+
+        .cat-pill.on {
+            background: var(--blue);
+            border-color: var(--blue);
+            color: #fff
+        }
+
+        .back-btn {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            background: var(--white);
+            border: 1.5px solid var(--line);
+            border-radius: 10px;
+            padding: 10px 20px;
+            cursor: pointer;
+            color: var(--mid);
+            margin-bottom: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px
+        }
+
+        .back-btn:hover {
+            border-color: var(--blue);
+            color: var(--blue)
+        }
+
+        .detail-hero h2 {
+            font-family: 'Instrument Serif', serif;
+            font-weight: 400;
+            font-size: clamp(26px, 4vw, 38px);
+            line-height: 1.1
+        }
+
+        .detail-hero h2 i {
+            font-style: italic;
+            color: var(--blue)
+        }
+
+        .detail-hero>p {
+            color: var(--mid);
+            font-size: 15px;
+            margin: 10px 0 24px;
+            max-width: 700px
+        }
+
+
+
+        /* story */
+        .story {
+            background: var(--white);
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            padding: 26px 30px;
+            margin-bottom: 18px
+        }
+
+        .story .sl {
+            font-size: 11px;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: var(--blue);
+            font-weight: 600;
+            margin-bottom: 6px
+        }
+
+        .story h3 {
+            font-family: 'Instrument Serif', serif;
+            font-weight: 400;
+            font-size: 24px;
+            margin-bottom: 10px
+        }
+
+        .story>p {
+            font-size: 14.5px;
+            color: var(--mid);
+            margin-bottom: 18px;
+            line-height: 1.65
+        }
+
+        .sf {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            overflow-x: auto;
+            padding: 4px 0 8px
+        }
+
+        .sf-b {
+            background: var(--blue-l);
+            border: 1.5px solid var(--blue);
+            border-radius: 12px;
+            padding: 13px 15px;
+            text-align: center;
+            flex-shrink: 0;
+            min-width: 105px;
+            max-width: 145px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--blue);
+            line-height: 1.3
+        }
+
+        .sf-a {
+            font-size: 20px;
+            color: var(--blue);
+            padding: 0 4px;
+            flex-shrink: 0
+        }
+
+        .story-note {
+            margin-top: 14px;
+            padding: 13px 16px;
+            background: var(--blue-l);
+            border-left: 3px solid var(--blue);
+            border-radius: 0 12px 12px 0;
+            font-size: 14px;
+            color: var(--ink);
+            line-height: 1.55
+        }
+
+        /* swim */
+        .swim {
+            background: var(--white);
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            padding: 20px 20px 16px;
+            margin-bottom: 16px;
+            overflow-x: auto
+        }
+
+        .swim h4 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--ink)
+        }
+
+        .sg {
+            display: grid;
+            min-width: 560px;
+            font-size: 11px
+        }
+
+        .sg .hd {
+            padding: 9px 7px;
+            border-bottom: 1px solid var(--line);
+            border-right: 1px solid var(--line);
+            font-size: 9px;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--mid);
+            font-weight: 500;
+            background: var(--bg)
+        }
+
+        .sg .hd:last-child {
+            border-right: 0
+        }
+
+        .sg .ac {
+            padding: 9px 7px;
+            border-bottom: 1px solid var(--line);
+            border-right: 1px solid var(--line);
+            font-weight: 600;
+            font-size: 10.5px;
+            display: flex;
+            align-items: center;
+            gap: 6px
+        }
+
+        .sg .ac .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            flex: 0 0 8px
+        }
+
+        .sg .c {
+            padding: 7px;
+            border-bottom: 1px solid var(--line);
+            border-right: 1px solid var(--line);
+            line-height: 1.3;
+            transition: .3s
+        }
+
+        .sg .c:last-child {
+            border-right: 0
+        }
+
+        .sg .c.v1 {
+            background: var(--blue-l);
+            border-left: 2px solid var(--blue)
+        }
+
+        .sg .c.later {
+            background: #f0ece4;
+            color: var(--faint);
+            border-left: 2px solid var(--faint)
+        }
+
+        .sg .c.idle {
+            color: var(--faint)
+        }
+
+        .sg .c.mt {
+            background: #eee;
+            color: var(--faint)
+        }
+
+        .sg .c.l0 {
+            background: #fdf0e8;
+            border-left: 2px solid var(--user)
+        }
+
+        .sg .c.l1 {
+            background: #e8f0fd;
+            border-left: 2px solid var(--ringg)
+        }
+
+        .sg .c.l2 {
+            background: #e8f8ee;
+            border-left: 2px solid #16a34a
+        }
+
+        .sg .c.l0.idle,
+        .sg .c.l1.idle,
+        .sg .c.l2.idle {
+            background: transparent;
+            border-left: 0
+        }
+
+        .sg .c.v2 {
+            border-left: 2px dashed var(--blue);
+            background: var(--blue-l);
+            font-style: italic
+        }
+
+        .rl .c,
+        .rl .ac {
+            border-bottom: 0
+        }
+
+        .lane-row {
+            animation: fadeIn .4s
+        }
+
+        /* stage */
+        .stg {
+            background: var(--white);
+            border: 1px solid var(--line);
+            border-left: 4px solid var(--blue);
+            border-radius: 14px;
+            padding: 20px 24px;
+            margin-bottom: 14px;
+            animation: fadeIn .35s
+        }
+
+        .stg .sl {
+            font-size: 11px;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: var(--blue);
+            font-weight: 600;
+            margin-bottom: 4px
+        }
+
+        .stg h3 {
+            font-family: 'Instrument Serif', serif;
+            font-weight: 400;
+            font-size: 22px;
+            margin-bottom: 6px
+        }
+
+        .stg p {
+            font-size: 14px;
+            color: var(--mid);
+            line-height: 1.6
+        }
+
+        .stg p b {
+            color: var(--ink);
+            font-weight: 600
+        }
+
+        .nbtn {
+            margin-top: 14px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            background: var(--blue);
+            border: 0;
+            border-radius: 10px;
+            padding: 11px 26px;
+            cursor: pointer;
+            color: var(--white)
+        }
+
+        .nbtn:hover {
+            background: #1d4ed8
+        }
+
+        .nbtn.sub {
+            background: var(--bg);
+            color: var(--blue);
+            border: 1.5px solid var(--blue)
+        }
+
+        /* v1 */
+        .v1c {
+            background: var(--blue-l);
+            border: 2px solid var(--blue);
+            border-radius: 16px;
+            padding: 24px 28px;
+            margin-bottom: 16px;
+            animation: fadeIn .35s
+        }
+
+        .v1c .sl {
+            font-size: 12px;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: var(--blue);
+            font-weight: 600;
+            margin-bottom: 4px
+        }
+
+        .v1c h3 {
+            font-family: 'Instrument Serif', serif;
+            font-weight: 400;
+            font-size: 24px;
+            color: var(--blue);
+            margin-bottom: 6px
+        }
+
+        .v1c p {
+            font-size: 14px;
+            color: var(--ink);
+            line-height: 1.6
+        }
+
+        /* fork + layers */
+        .fcard {
+            background: var(--white);
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            padding: 20px 24px;
+            margin-bottom: 14px;
+            animation: fadeIn .35s
+        }
+
+        .fcard .sl {
+            font-size: 11px;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: var(--mid);
+            font-weight: 600;
+            margin-bottom: 8px
+        }
+
+        .fg {
+            display: grid;
+            gap: 8px
+        }
+
+        .fk {
+            border-radius: 10px;
+            padding: 10px 16px;
+            font-size: 14px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px
+        }
+
+        .lyrs {
+            animation: fadeIn .35s
+        }
+
+        .lyrs h3 {
+            font-family: 'Instrument Serif', serif;
+            font-weight: 400;
+            font-size: 22px;
+            margin-bottom: 4px
+        }
+
+        .lyrs>p {
+            font-size: 13px;
+            color: var(--mid);
+            margin-bottom: 12px
+        }
+
+        .lg {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px
+        }
+
+        @media(max-width:700px) {
+            .lg {
+                grid-template-columns: 1fr
+            }
+        }
+
+        .ly {
+            background: var(--white);
+            border: 1px solid var(--line);
+            border-left: 4px solid var(--blue);
+            border-radius: 12px;
+            padding: 12px 14px
+        }
+
+        .ly h5 {
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 1px
+        }
+
+        .ly p {
+            font-size: 12px;
+            color: var(--mid)
+        }
+
+        .ly .w {
+            font-size: 9px;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            margin-top: 4px;
+            font-weight: 700
+        }
+
+        .w-easy {
+            color: var(--green)
+        }
+
+        .w-med {
+            color: var(--amber)
+        }
+
+        .w-heavy {
+            color: var(--red)
+        }
+
+        .w-last {
+            color: var(--faint)
+        }
+
+        .l-easy {
+            border-left-color: var(--green)
+        }
+
+        .l-med {
+            border-left-color: var(--amber)
+        }
+
+        .l-heavy {
+            border-left-color: var(--red)
+        }
+
+        .l-last {
+            border-left-color: var(--faint)
+        }
+
+        .reset {
+            font-size: 12px;
+            color: var(--faint);
+            background: none;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            padding: 6px 14px;
+            cursor: pointer;
+            margin-top: 12px
+        }
+
+        /* build table */
+        .btbl {
+            margin: 16px 0;
+            border-top: 1px solid var(--line)
+        }
+
+        .btbl-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 14px 0;
+            border-bottom: 1px solid var(--line)
+        }
+
+        .btbl-label {
+            font-size: 11px;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: var(--blue);
+            font-weight: 600;
+            min-width: 100px;
+            flex: 0 0 100px;
+            padding-top: 2px
+        }
+
+        .btbl-desc {
+            font-size: 13.5px;
+            color: var(--mid);
+            line-height: 1.55;
+            flex: 1
+        }
+
+        /* channels table */
+        .chtbl {
+            margin: 16px 0;
+            border: 1px solid var(--blue);
+            border-radius: 12px;
+            overflow: hidden
+        }
+
+        .chtbl table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px
+        }
+
+        .chtbl th {
+            font-size: 10px;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--blue);
+            font-weight: 500;
+            text-align: left;
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--line);
+            background: var(--blue-l)
+        }
+
+        .chtbl td {
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--line);
+            color: var(--mid);
+            vertical-align: top
+        }
+
+        .chtbl tr:last-child td {
+            border-bottom: 0
+        }
+
+        .chtbl td:first-child {
+            font-weight: 600;
+            color: var(--ink)
+        }
+
+        /* summary card */
+        .summ {
+            margin: 16px 0;
+            padding: 16px 20px;
+            background: var(--blue-l);
+            border: 1px solid rgba(37, 99, 235, .12);
+            border-radius: 12px;
+            font-size: 14px;
+            color: var(--ink);
+            line-height: 1.6
+        }
+
+        /* accordion */
+        .acc {
+            background: var(--white);
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            margin-bottom: 10px;
+            overflow: hidden;
+            transition: .2s
+        }
+
+        .acc.active {
+            border-color: var(--blue);
+            box-shadow: 0 2px 16px rgba(37, 99, 235, .06)
+        }
+
+        .acc.locked {
+            opacity: .5
+        }
+
+        .acc-hd {
+            padding: 16px 22px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            user-select: none
+        }
+
+        .acc.locked .acc-hd {
+            cursor: not-allowed
+        }
+
+        .acc-hd .acc-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 700;
+            flex: 0 0 28px
+        }
+
+        .acc-icon.done {
+            background: var(--green-bg);
+            color: var(--green)
+        }
+
+        .acc-icon.cur {
+            background: var(--blue);
+            color: var(--white)
+        }
+
+        .acc-icon.lock {
+            background: var(--bg);
+            color: var(--faint)
+        }
+
+        .acc-hd .acc-t {
+            font-size: 15px;
+            font-weight: 600;
+            flex: 1
+        }
+
+        .acc-hd .acc-arrow {
+            color: var(--faint);
+            font-size: 12px;
+            transition: .2s
+        }
+
+        .acc.active .acc-arrow {
+            transform: rotate(90deg);
+            color: var(--blue)
+        }
+
+        .acc-body {
+            display: none;
+            padding: 0 22px 20px
+        }
+
+        .acc.active .acc-body {
+            display: block;
+            animation: fadeIn .3s
+        }
+
+        footer {
+            padding: 16px 0;
+            color: var(--faint);
+            font-size: 12px;
+            text-align: center;
+            border-top: 1px solid var(--line);
+            margin-top: 28px
+        }
+
+
+        /* === HANDBOOK LAYOUT === */
+        .handbook {
+            display: flex;
+            min-height: 100vh
+        }
+
+        .sidebar {
+            width: 260px;
+            background: var(--white);
+            border-right: 1px solid var(--line);
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            overflow-y: auto;
+            padding: 24px 0;
+            z-index: 100;
+            transition: transform .4s ease, opacity .4s ease
+        }
+
+        .sidebar-brand {
+            padding: 0 20px 20px;
+            border-bottom: 1px solid var(--line);
+            margin-bottom: 16px
+        }
+
+        .sidebar-brand .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--blue);
+            display: inline-block;
+            margin-right: 8px
+        }
+
+        .sidebar-brand .brand-label {
+            font-size: 10px;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: var(--mid)
+        }
+
+        .sidebar-brand .brand-sub {
+            font-family: 'Instrument Serif', serif;
+            font-size: 18px;
+            color: var(--ink);
+            margin-top: 4px
+        }
+
+        .sidebar-group {
+            padding: 0 20px;
+            margin-bottom: 20px
+        }
+
+        .sidebar-group-label {
+            font-size: 10px;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: var(--faint);
+            margin-bottom: 8px
+        }
+
+        .sidebar-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--mid);
+            transition: .15s;
+            margin-bottom: 2px
+        }
+
+        .sidebar-item:hover {
+            background: var(--bg);
+            color: var(--ink)
+        }
+
+        .sidebar-item.active {
+            background: var(--blue-l);
+            color: var(--blue);
+            font-weight: 600;
+            border-left: 3px solid var(--blue)
+        }
+
+        .sidebar-item .num {
+            font-size: 12px;
+            color: var(--faint);
+            font-weight: 600
+        }
+
+        .sidebar-item.locked {
+            cursor: not-allowed
+        }
+
+        .sidebar-item.locked:hover {
+            background: transparent;
+            color: var(--mid)
+        }
+
+        .sidebar-item.locked .lock {
+            font-size: 11px;
+            color: var(--faint)
+        }
+
+        .main-content {
+            margin-left: 260px;
+            flex: 1;
+            min-height: 100vh;
+            transition: margin-left .4s ease
+        }
+
+        .section-panel {
+            display: none;
+            padding: 40px 48px 80px;
+            max-width: 1100px
+        }
+
+        .section-panel.active {
+            display: block
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 11px;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: var(--blue);
+            border: 1.5px solid var(--blue);
+            border-radius: 99px;
+            padding: 6px 16px;
+            margin-bottom: 20px
+        }
+
+        .section-title {
+            font-family: 'Instrument Serif', serif;
+            font-weight: 400;
+            font-size: clamp(30px, 4vw, 44px);
+            line-height: 1.15;
+            margin-bottom: 8px
+        }
+
+        .section-sub {
+            font-size: 16px;
+            color: var(--mid);
+            line-height: 1.6;
+            margin-bottom: 32px
+        }
+
+        /* === COVER === */
+        .cover-section {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(125% 125% at 50% 32%, #0d1426 0%, #080c18 56%, #05080f 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 200;
+            transition: opacity .6s ease;
+            overflow: hidden
+        }
+
+        .cover-ambient {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            background: radial-gradient(42% 50% at 50% 40%, rgba(37, 99, 235, .10), transparent 72%), radial-gradient(34% 42% at 72% 78%, rgba(59, 130, 246, .06), transparent 72%)
+        }
+
+        .cover-depth {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+            will-change: transform
+        }
+
+        .cover-orb {
+            position: absolute;
+            top: 42%;
+            left: 50%;
+            width: 560px;
+            height: 560px;
+            margin: -280px 0 0 -280px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(59, 130, 246, .30) 0%, rgba(37, 99, 235, .14) 36%, transparent 68%);
+            filter: blur(42px);
+            animation: coverBreathe 7s ease-in-out infinite;
+            will-change: transform, opacity
+        }
+
+        @keyframes coverBreathe {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: .72
+            }
+
+            50% {
+                transform: scale(1.12);
+                opacity: 1
+            }
+        }
+
+        .cover-canvas {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2
+        }
+
+        .cover-inner {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            max-width: 800px;
+            padding: 0 24px;
+            will-change: transform
+        }
+
+        .cover-line1 {
+            font-size: clamp(14px, 2vw, 18px);
+            color: rgba(255, 255, 255, .4);
+            font-weight: 500;
+            letter-spacing: .03em;
+            margin-bottom: 16px;
+            animation: fadeUp .8s ease both
+        }
+
+        .cover-line2 {
+            font-family: 'Instrument Serif', serif;
+            font-weight: 400;
+            font-size: clamp(48px, 9vw, 96px);
+            color: #fff;
+            line-height: 1.05;
+            margin-bottom: 16px;
+            animation: fadeUp .8s ease .15s both
+        }
+
+        .cover-line3 {
+            font-size: clamp(14px, 2vw, 18px);
+            color: rgba(255, 255, 255, .4);
+            font-weight: 500;
+            margin-bottom: 56px;
+            animation: fadeUp .8s ease .3s both;
+            letter-spacing: .03em
+        }
+
+        .cover-line3 span {
+            color: #60a5fa;
+            font-weight: 600
+        }
+
+        .cover-line1 span {
+            color: #60a5fa;
+            font-weight: 600
+        }
+
+        .cover-start {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            background: rgba(255, 255, 255, .06);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, .16);
+            border-radius: 12px;
+            padding: 15px 38px;
+            cursor: pointer;
+            transition: transform .35s cubic-bezier(.22, 1, .36, 1), background .35s ease, border-color .35s ease, box-shadow .35s ease;
+            animation: fadeUp .8s ease .45s both;
+            backdrop-filter: blur(14px) saturate(140%);
+            -webkit-backdrop-filter: blur(14px) saturate(140%);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, .08)
+        }
+
+        .cover-start:hover {
+            background: rgba(59, 130, 246, .16);
+            border-color: rgba(96, 165, 250, .5);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 34px -10px rgba(37, 99, 235, .55), inset 0 1px 0 rgba(255, 255, 255, .12)
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        .handbook.cover-active .sidebar {
+            transform: translateX(-100%);
+            opacity: 0;
+            pointer-events: none
+        }
+
+        .handbook.cover-active .main-content {
+            margin-left: 0
+        }
+
+        @media (prefers-reduced-motion:reduce) {
+            .cover-orb {
+                animation: none
+            }
+
+            .cover-line1,
+            .cover-line2,
+            .cover-line3,
+            .cover-start {
+                animation: none;
+                opacity: 1;
+                transform: none
+            }
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1
+            }
+
+            50% {
+                opacity: .3
+            }
+        }
+
+        /* === IDEA LIBRARY (existing, wrapped) === */
+        .idea-library .page {
+            max-width: 100%;
+            padding: 0
+        }
+    </style>
+
+<style>
+.hb-code{background:#0f172a;color:#e6edf7;border-radius:12px;padding:16px 18px;overflow-x:auto;font-family:'JetBrains Mono',monospace;font-size:12.5px;line-height:1.6;margin:12px 0;white-space:pre}
+.hb-code code{font-family:inherit;white-space:pre}
+.hb-code.prompt,.hb-code.run{background:#0f172a;border:0}
+.hb-codewrap{position:relative}
+.copy-btn{position:absolute;top:8px;right:8px;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;background:#334155;color:#fff;border:0;border-radius:7px;padding:5px 11px;cursor:pointer;opacity:.85}
+.copy-btn:hover{opacity:1}
+.hb-ic{font-family:'JetBrains Mono',monospace;font-size:.88em;background:var(--blue-l);color:var(--ink);border:1px solid #d6e2fb;border-radius:5px;padding:1px 6px}
+.hb-callout{border:1px solid var(--line);border-left:3px solid var(--back);background:var(--white);border-radius:0 12px 12px 0;padding:13px 16px;margin:14px 0;font-size:14.5px;line-height:1.65;color:var(--ink);max-width:760px}
+.hb-table{width:100%;border-collapse:collapse;font-size:13.5px;margin:14px 0;display:block;overflow-x:auto}
+.hb-table th{background:var(--blue-l);color:var(--ink);text-align:left;padding:9px 12px;border:1px solid var(--line);font-size:11px;letter-spacing:.05em;text-transform:uppercase;white-space:nowrap}
+.hb-table td{padding:9px 12px;border:1px solid var(--line);color:var(--mid);vertical-align:top}
+.section-panel h2.hb{font-family:'Instrument Serif',serif;font-weight:400;font-size:27px;margin:40px 0 12px;padding-top:14px;border-top:1px solid var(--line)}
+.section-panel h3.hb{font-size:18px;font-weight:600;margin:26px 0 8px}
+.section-panel h4.hb{font-size:15px;font-weight:600;margin:16px 0 4px;color:var(--mid)}
+.section-panel p.hb{font-size:15.5px;color:var(--mid);line-height:1.8;margin:12px 0;max-width:760px}
+.section-panel p.hb strong{color:var(--ink)}
+.hb-list{margin:10px 0 12px 22px;color:var(--mid);font-size:15px;line-height:1.7}
+.hb-li{margin:5px 0}
+.hb-hr{border:0;border-top:1px solid var(--line);margin:26px 0}
+/* numbered step cards */
+.hb-steps{list-style:none;counter-reset:step;margin:16px 0;padding:0;max-width:780px}
+.hb-steps li.hb-step{counter-increment:step;position:relative;background:var(--white);border:1px solid var(--line);border-radius:12px;padding:14px 18px 14px 54px;margin:9px 0;font-size:15px;color:var(--mid);line-height:1.6}
+.hb-steps li.hb-step::before{content:counter(step);position:absolute;left:14px;top:12px;width:28px;height:28px;border-radius:50%;background:var(--ink);color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.hb-steps li.hb-step strong{color:var(--ink)}
+/* checklist */
+.hb-checks{list-style:none;margin:14px 0;padding:0;max-width:760px}
+.hb-checks li.hb-check{position:relative;padding:11px 16px 11px 42px;margin:7px 0;background:var(--white);border:1px solid var(--line);border-radius:10px;font-size:15px;color:var(--mid);line-height:1.55}
+.hb-checks li.hb-check::before{content:"☐";position:absolute;left:14px;top:9px;font-size:18px;color:var(--faint)}
+.hb-checks li.hb-check.done::before{content:"☑";color:var(--green)}
+/* bullets */
+.hb-list{list-style:none;margin:12px 0;padding:0;max-width:760px;color:var(--mid);font-size:15px;line-height:1.7}
+.hb-list .hb-li{position:relative;padding-left:22px;margin:8px 0}
+.hb-list .hb-li::before{content:"";position:absolute;left:5px;top:10px;width:6px;height:6px;border-radius:50%;background:var(--faint)}
+/* collapsible code */
+.hb-fold{margin:12px 0;max-width:820px}
+.hb-fold>summary{cursor:pointer;list-style:none;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;color:var(--mid);background:var(--white);border:1px solid var(--line);border-radius:10px;padding:11px 15px;user-select:none}
+.hb-fold>summary:hover{border-color:var(--blue)}
+.hb-fold>summary::-webkit-details-marker{display:none}
+.hb-fold>summary::before{content:"▸ ";font-weight:700}
+.hb-fold[open]>summary::before{content:"▾ "}
+.hb-fold[open]>summary{border-radius:10px 10px 0 0}
+.hb-fold .hb-codewrap{margin:0}
+.starter{background:var(--blue-l);border:1.5px solid var(--blue);border-radius:16px;padding:20px 22px;margin:18px 0 8px}
+.starter-head{font-size:15px;font-weight:700;color:var(--blue);margin-bottom:4px}
+.starter .hb{margin:6px 0 14px}
+.sf-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:640px){.sf-grid{grid-template-columns:1fr}}
+.sf-card{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column}
+.sf-name{font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:600;color:var(--ink)}
+.sf-desc{font-size:13px;color:var(--mid);line-height:1.5;margin:4px 0 12px;flex:1}
+.sf-acts{display:flex;gap:8px}
+.sf-btn{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;background:var(--blue);color:#fff;border:0;border-radius:8px;padding:8px 16px;cursor:pointer}
+.sf-btn:hover{opacity:.9}
+.sf-btn.ghost{background:var(--white);color:var(--blue);border:1.5px solid var(--blue)}
+/* toggles: Tool / Computer / Language */
+.only-js,.only-codex,.only-mac{display:none}
+body.lang-js .only-py{display:none} body.lang-js .only-js{display:block}
+body.tool-codex .only-claude{display:none} body.tool-codex .only-codex{display:block}
+body.os-mac .only-win{display:none} body.os-mac .only-mac{display:block}
+.langbar{position:sticky;top:0;z-index:50;display:flex;gap:18px;align-items:center;flex-wrap:wrap;background:var(--bg);padding:14px 0 12px;margin:0 0 10px;border-bottom:1px solid var(--line)}
+.tgroup{display:flex;gap:6px;align-items:center}
+.tgroup .lab{font-size:10px;font-weight:700;color:var(--faint);text-transform:uppercase;letter-spacing:.08em;margin-right:2px}
+.lang-btn{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;background:var(--white);color:var(--mid);border:1px solid var(--line);border-radius:8px;padding:6px 13px;cursor:pointer}
+.lang-btn:hover{border-color:var(--blue)}
+.lang-btn.on{background:var(--blue);color:#fff;border-color:var(--blue)}
+</style>
+
+</head>
+<body>
+<div class="handbook cover-active">
+<nav class="sidebar"><div class="sidebar-brand"><div><span class="dot"></span><span class="brand-label">GrowthX Buildathon</span></div><div class="brand-sub">Builder Handbook</div></div>
+<div class="sidebar-group"><div class="sidebar-group-label">Start Here</div>
+<div class="sidebar-item" data-section="welcome"><span>Welcome</span><span class="num">01</span></div>
+<div class="sidebar-item" data-section="before"><span>Before You Arrive</span><span class="num">02</span></div>
+</div>
+<div class="sidebar-group"><div class="sidebar-group-label">Build</div>
+<div class="sidebar-item" data-section="ideation"><span>Ideation</span><span class="num">03</span></div>
+<div class="sidebar-item" data-section="building"><span>Build</span><span class="num">04</span></div>
+<div class="sidebar-item" data-section="golive"><span>Go Live</span><span class="num">05</span></div>
+<div class="sidebar-item" data-section="capabilities"><span>Capabilities</span><span class="num">06</span></div>
+<div class="sidebar-item" data-section="demo"><span>Demo</span><span class="num">07</span></div>
+</div>
+<div class="sidebar-group"><div class="sidebar-group-label">Help</div>
+<div class="sidebar-item" data-section="troubleshooting"><span>Troubleshooting</span><span class="num">08</span></div>
+</div>
+</nav>
+<div class="main-content">
+
+<div id="coverOverlay" class="cover-section">
+  <div class="cover-ambient"></div>
+  <div class="cover-depth" id="coverDepth"><div class="cover-orb"></div></div>
+  <canvas class="cover-canvas" id="coverCanvas"></canvas>
+  <div class="cover-inner" id="coverInner">
+    <div class="cover-line1"><span>GrowthX</span> Presents</div>
+    <div class="cover-line2">Build Your Own<br>Personal AI Agent</div>
+    <div class="cover-line3">Your AI twin, built in <span>3 hours</span></div>
+    <button class="cover-start" onclick="dismissCover()">Open the handbook →</button>
+  </div>
+</div>
+
+<div class="langbar"><span class="tgroup"><span class="lab">Tool</span><button class="lang-btn" id="tcl" onclick="setTool('claude')">Claude</button><button class="lang-btn" id="tcx" onclick="setTool('codex')">Codex</button></span><span class="tgroup"><span class="lab">Computer</span><button class="lang-btn" id="owin" onclick="setOS('win')">🖥️ Windows</button><button class="lang-btn" id="omac" onclick="setOS('mac')">🍎 macOS</button></span><span class="tgroup"><span class="lab">Language</span><button class="lang-btn" id="lpy" onclick="setLang('py')">🐍 Python</button><button class="lang-btn" id="ljs" onclick="setLang('js')">🟨 JavaScript</button></span></div>
+<div class="section-panel" id="sec-welcome"><div class="section-label">Start Here</div><h2 class="section-title">Welcome</h2><p class="section-sub">What today is — and how to get the most from it.</p><p class="hb">You&#x27;re here to build your own <strong>personal AI agent</strong> today — and demo it live on stage by the end. Not a slide, not a mockup: a real agent that <em>you</em> built, running in front of the room.</p>
+<p class="hb">There&#x27;s no prize to chase. The reward is the thing you walk out with, and the moment you show it actually working.</p>
+<h2 class="hb">What to expect</h2>
+<p class="hb">This is a real build, not a copy-paste tutorial. Parts of it will feel confusing, and it won&#x27;t always be a straight line — you&#x27;ll try something, hit a wall, and work it out. <strong>That&#x27;s the point.</strong> It&#x27;s meant to make you think, and mentors are in the room the whole time to unblock you. You don&#x27;t need to be a programmer to do this. You&#x27;ll be fine.</p>
+<h2 class="hb">How the day runs</h2>
+<p class="hb"><strong>Kickoff → Build → Demo.</strong> We get everyone set up, you build through a few short phases at your own pace, and we close with everyone showing what they made.</p>
+<p class="hb">One thing before you come: do the quick setup in <strong>Before You Arrive</strong> tonight. It saves your first hour for building instead of installing.</p></div>
+<div class="section-panel" id="sec-before"><div class="section-label">Setup</div><h2 class="section-title">Before You Arrive</h2><p class="section-sub">Install everything tonight — about 15 minutes.</p><p class="hb">Spend about <strong>15 minutes tonight</strong> so you arrive ready to build. You only need two things: <strong>Node.js</strong> and <strong>one AI tool</strong> (Claude Code recommended). Once Claude is installed, it can set up anything else for you on the day — so this list is short on purpose.</p>
+<div class="hb-callout ">🧘 You don&#x27;t need to understand all of it. Install it, run the check at the bottom, and you&#x27;re set. Mentors will fix anything that didn&#x27;t work tomorrow.</div>
+<div class="hb-callout ">⚙️ Use the <strong>Tool</strong> and <strong>Computer</strong> toggles at the top of this page to match what you have.</div>
+<h2 class="hb">1. Install Node.js</h2>
+<div class="only-win">
+<ol class="hb-steps"><li class="hb-step">Go to <strong>nodejs.org</strong> and download the <strong>LTS</strong> version.</li><li class="hb-step">Run the installer (keep clicking Next).</li><li class="hb-step">Open your <strong>terminal (PowerShell)</strong> — you&#x27;ll use it in the next step.</li></ol>
+</div>
+<div class="only-mac">
+<ol class="hb-steps"><li class="hb-step">Go to <strong>nodejs.org</strong>, download the <strong>LTS</strong> version, and install it.</li><li class="hb-step">Open the <strong>Terminal app</strong> — you&#x27;ll use it in the next step.</li></ol>
+</div>
+<h2 class="hb">2. Install your AI tool</h2>
+<p class="hb">Install <strong>Claude Code first</strong> — once it&#x27;s running and signed in, it can install everything else you need (even Python) for you.</p>
+<div class="only-claude">
+<p class="hb">In your terminal:</p>
+<div class="hb-callout ">💻 <strong>RUN</strong></div>
+<div class="hb-codewrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre class="hb-code run"><code>npm install -g @anthropic-ai/claude-code</code></pre></div>
+<p class="hb">Then start it and sign in with your Claude account:</p>
+<div class="hb-callout ">💻 <strong>RUN</strong></div>
+<div class="hb-codewrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre class="hb-code run"><code>claude</code></pre></div>
+<p class="hb">Sign in when it asks, then type <code class="hb-ic">/exit</code> to return to the terminal.</p>
+</div>
+<div class="only-codex">
+<p class="hb">In your terminal:</p>
+<div class="hb-callout ">💻 <strong>RUN</strong></div>
+<div class="hb-codewrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre class="hb-code run"><code>npm install -g @openai/codex</code></pre></div>
+<p class="hb">Then sign in:</p>
+<div class="hb-callout ">💻 <strong>RUN</strong></div>
+<div class="hb-codewrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre class="hb-code run"><code>codex login</code></pre></div>
+</div>
+<h2 class="hb">3. Python (optional)</h2>
+<p class="hb">You only need Python if you choose the Python path tomorrow — and your AI tool can install it for you once it&#x27;s running. <strong>You can skip this for now.</strong></p>
+<h2 class="hb">Final check</h2>
+<p class="hb">In your terminal, confirm Node is installed:</p>
+<div class="hb-callout ">💻 <strong>RUN</strong></div>
+<div class="hb-codewrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre class="hb-code run"><code>node --version</code></pre></div>
+<p class="hb">You should see a version like <code class="hb-ic">v20.x</code> (not an error). Then check your AI tool replies:</p>
+<div class="only-claude">
+<div class="hb-callout ">💻 <strong>RUN</strong></div>
+<div class="hb-codewrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre class="hb-code run"><code>claude -p &quot;say hi in one word&quot;</code></pre></div>
+</div>
+<div class="only-codex">
+<div class="hb-callout ">💻 <strong>RUN</strong></div>
+<div class="hb-codewrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre class="hb-code run"><code>echo &quot;say hi in one word&quot; | codex exec -</code></pre></div>
+</div>
+<div class="hb-callout ">✅ Got a version number and a one-word reply? You&#x27;re ready — see you tomorrow.</div>
+<div class="hb-callout ">💡 We may share a one-step setup script on the day, but doing this tonight means you can start building right away.</div></div>
+<div class="section-panel" id="sec-ideation"><h2 class="section-title">Ideation</h2><p class="section-sub">Design your agent — on Claude web.</p><div class="starter"><div class="starter-head">📥 Starter file — give this to Claude / ChatGPT</div><div class="sf-card"><div class="sf-name">IDEATION.md</div><div class="sf-desc">The rules your AI follows for the ideation interview.</div><div class="sf-acts"><button class="sf-btn" onclick="copyFile('IDEATION.md', this)">Copy</button><button class="sf-btn ghost" onclick="downloadFile('IDEATION.md')">Download</button></div></div></div><p class="hb">Decide <strong>who your agent is</strong> — its voice, its humor, how it texts. No code in this phase. <strong>Takes 15–20 minutes.</strong></p>
+<div class="hb-callout ">🌐 Do this on <strong>Claude web (claude.ai) or ChatGPT — not Claude Code.</strong> It keeps your Claude Code usage fresh for the actual build later.</div>
+<h2 class="hb">Steps</h2>
+<ol class="hb-steps"><li class="hb-step">Open <strong>claude.ai</strong> (or ChatGPT) in your browser.</li><li class="hb-step">Give it the **<code class="hb-ic">IDEATION.md</code>** rules — copy or download them from the Starter Files box above and paste them into the chat.</li><li class="hb-step">Tell it: <strong>&quot;I&#x27;m building a personal AI agent that chats like me. Interview me.&quot;</strong> No script needed — that one line kicks it off.</li><li class="hb-step">It walks you through <strong>about 10 quick questions, one at a time</strong> — how you text (tone, language, emojis, greetings, humor, boundaries, topics). Each is a tick-box: put an <code class="hb-ic">x</code> in the brackets next to what fits you and send it back. Leave one unsure and it picks a sensible default.</li><li class="hb-step">It writes you a **<code class="hb-ic">PERSONALITY.md</code>**. Save it into your <code class="hb-ic">my-twin</code> folder.</li><li class="hb-step">It suggests a few <strong>names</strong> — pick one. You should walk out knowing your agent&#x27;s name.</li><li class="hb-step">Confirm your <strong>language:</strong> Python (default, easiest) or JavaScript.</li></ol>
+<div class="hb-callout ">💡 The name matters — you&#x27;ll introduce your agent by name when you demo it on stage.</div>
+<p class="hb">When you have a saved <code class="hb-ic">PERSONALITY.md</code>, a name, and a language, you&#x27;re ready to build.</p></div>
+<div class="section-panel" id="sec-building"><h2 class="section-title">Build It</h2><p class="section-sub">From a terminal loop to a real app.</p><div class="starter"><div class="starter-head">📥 Starter file — give this to Claude Code</div><div class="sf-card"><div class="sf-name">BUILDING.md</div><div class="sf-desc">The rules Claude Code follows to build your agent.</div><div class="sf-acts"><button class="sf-btn" onclick="copyFile('BUILDING.md', this)">Copy</button><button class="sf-btn ghost" onclick="downloadFile('BUILDING.md')">Download</button></div></div></div><p class="hb">Now you&#x27;re in <strong>Claude Code</strong> (the terminal). Three small steps. <strong>You write the prompts yourself</strong> — figuring out what to ask for <em>is</em> the building. After each step: test it, then type <code class="hb-ic">checkpoint</code> and hit Enter to save.</p>
+<p class="hb"><strong>Kickoff — paste this once to start</strong> (in Claude Code, inside your <code class="hb-ic">my-twin</code> folder):</p>
+<div class="hb-callout ">📋 <strong>PROMPT</strong></div>
+<div class="hb-codewrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre class="hb-code prompt"><code>Read BUILDING.md and PERSONALITY.md in this folder, and follow BUILDING.md as your rules
+for this whole session.
+
+I&#x27;m building my personal AI agent — a digital twin that chats in my voice (described in
+PERSONALITY.md). Its brain must be the claude -p CLI I&#x27;m already signed into — no API key.
+
+Build everything in ONE language — Python (file named core.py) OR Node.js (core.js).
+Pick one, keep the same file names throughout, and don&#x27;t rename files later.
+
+Start with Iteration 0 from BUILDING.md: plan it first, then build.</code></pre></div>
+<div class="hb-callout ">🧠 Your agent&#x27;s brain is the **<code class="hb-ic">claude -p</code><strong> command you&#x27;re already signed into — </strong>no API key, no cost.** (<code class="hb-ic">BUILDING.md</code> enforces this, so you don&#x27;t have to.)</div>
+<div class="hb-callout ">✍️ After this, <strong>you write the prompts</strong> — deciding what to ask for <em>is</em> the building. (Stuck? Each step has an optional example you can expand.)</div>
+<div class="hb-callout ">🛠️ Something breaks? Don&#x27;t debug it alone — <strong>paste the exact error back to Claude</strong> and let it fix it.</div>
+<h2 class="hb">Iteration 0 — a tiny terminal program</h2>
+<p class="hb">A read-and-answer loop you run in the terminal. Your kickoff prompt already starts this — make sure what Claude builds does all of these:</p>
+<ol class="hb-steps"><li class="hb-step">You run it from the terminal.</li><li class="hb-step">It reads your <code class="hb-ic">PERSONALITY.md</code>.</li><li class="hb-step">It loops: waits for you to type a message → prints a reply in your voice (via <code class="hb-ic">claude -p</code>) → waits for the next one.</li><li class="hb-step">It exits when you press <strong>Ctrl+C</strong>.</li></ol>
+<details class="hb-fold"><summary>📋 Show an example prompt (optional)</summary>
+<div class="only-py">
+<div class="hb-callout ">📋 <strong>PROMPT</strong></div>
+<div class="hb-codewrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre class="hb-code prompt"><code>Build a small Python program in a file named core.py that I run from the terminal.
+It reads my PERSONALITY.md, then loops: waits for me to type a message, sends my personality
++ my message to the claude -p CLI (as a subprocess), prints the reply in my voice, then waits
+for the next message. It exits on Ctrl+C. No API key — use claude -p. Plan it first, then build.</code></pre></div>
+</div>
+<div class="only-js">
+<div class="hb-callout ">📋 <strong>PROMPT</strong></div>
+<div class="hb-codewrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre class="hb-code prompt"><code>Build a small Node.js program in a file named core.js that I run from the terminal.
+It reads my PERSONALITY.md, then loops: waits for me to type a message, sends my personality
++ my message to the claude -p CLI (via child_process), prints the reply in my voice, then waits
+for the next message. It exits on Ctrl+C. No API key — use claude -p. Plan it first, then build.</code></pre></div>
+</div>
+</details>
+<p class="hb">Then run it in the terminal:</p>
+<div class="only-py">
+<div class="hb-callout ">💻 <strong>RUN</strong></div>
+<div class="hb-codewrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre class="hb-code run"><code>python core.py</code></pre></div>
+</div>
+<div class="only-js">
+<div class="hb-callout ">💻 <strong>RUN</strong></div>
+<div class="hb-codewrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre class="hb-code run"><code>node core.js</code></pre></div>
+</div>
+<p class="hb">Talk to it for a minute. When it feels right, type <code class="hb-ic">checkpoint</code> and hit Enter.</p>
+<h2 class="hb">Iteration 1 — a proper app</h2>
+<p class="hb">Open it up into a real chat app.</p>
+<p class="hb">Write a prompt that asks Claude to:</p>
+<ol class="hb-steps"><li class="hb-step">Keep it running as a continuous chat that waits for each new message.</li><li class="hb-step">Make the interface clean — label the lines (like <code class="hb-ic">You:</code> and your agent&#x27;s name).</li><li class="hb-step"><strong>No memory yet</strong> — that&#x27;s the next step.</li></ol>
+<p class="hb">Run it the same way, chat with it, then type <code class="hb-ic">checkpoint</code> and Enter.</p>
+<h2 class="hb">Iteration 2 — give it lasting memory</h2>
+<p class="hb">Right now it forgets everything when it restarts. Give it <strong>persistent memory</strong> — it saves the conversation to a file and loads it back, so it remembers across messages <em>and</em> restarts.</p>
+<p class="hb">Write a prompt that asks Claude to:</p>
+<ol class="hb-steps"><li class="hb-step">Save each message and reply to a file on disk (for example <code class="hb-ic">memory.json</code>).</li><li class="hb-step">Load that history when the app starts, and include it so replies stay in context.</li><li class="hb-step">Make sure it survives a restart — not just memory inside one run.</li></ol>
+<p class="hb">Run it, then test it: tell it something, <strong>fully restart the app</strong>, then ask about it — it should still know. Type <code class="hb-ic">checkpoint</code> and Enter.</p>
+<div class="hb-callout ">✅ You now have an app that chats like you <strong>and</strong> remembers across restarts. Next: put it somewhere people can actually message it.</div></div>
+<div class="section-panel" id="sec-golive"><h2 class="section-title">Go Live</h2><p class="section-sub">Put your agent on a chat platform.</p><p class="hb">Your agent runs in the terminal. Now put it on a <strong>real chat app</strong> so it replies to real messages — even when you&#x27;re away.</p>
+<div class="hb-callout ">🎯 Message your agent in Slack and get a reply, in your voice.</div>
+<h2 class="hb">Slack</h2>
+<p class="hb">A Slack <strong>app manifest</strong> sets up the whole app in one paste — no clicking through scopes, events, and settings by hand.</p>
+<ol class="hb-steps"><li class="hb-step">Go to <strong>api.slack.com/apps</strong> → <strong>Create New App</strong> → <strong>From an app manifest</strong> → pick your workspace.</li><li class="hb-step">Delete the sample, paste the manifest below, and change both <strong>&quot;name&quot;</strong> values to your agent&#x27;s name. Create the app.</li></ol>
+<div class="hb-callout ">📋 <strong>Copy this manifest</strong> (change the two names to your agent&#x27;s):</div>
+<div class="hb-codewrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre class="hb-code"><code>{
+  &quot;display_information&quot;: { &quot;name&quot;: &quot;My Twin&quot; },
+  &quot;features&quot;: {
+    &quot;app_home&quot;: { &quot;home_tab_enabled&quot;: false, &quot;messages_tab_enabled&quot;: true, &quot;messages_tab_read_only_enabled&quot;: false },
+    &quot;bot_user&quot;: { &quot;display_name&quot;: &quot;My Twin&quot;, &quot;always_online&quot;: true }
+  },
+  &quot;oauth_config&quot;: { &quot;scopes&quot;: { &quot;bot&quot;: [&quot;app_mentions:read&quot;,&quot;chat:write&quot;,&quot;im:history&quot;,&quot;im:read&quot;,&quot;im:write&quot;] } },
+  &quot;settings&quot;: {
+    &quot;event_subscriptions&quot;: { &quot;bot_events&quot;: [&quot;app_mention&quot;,&quot;message.im&quot;] },
+    &quot;interactivity&quot;: { &quot;is_enabled&quot;: false },
+    &quot;org_deploy_enabled&quot;: false, &quot;socket_mode_enabled&quot;: true, &quot;token_rotation_enabled&quot;: false
+  }
+}</code></pre></div>
+<ol class="hb-steps"><li class="hb-step"><strong>Install</strong> it: left sidebar → <strong>Install App</strong> → <strong>Install to Workspace</strong> → <strong>Allow</strong>.</li><li class="hb-step">Grab your <strong>two tokens</strong> and put them in a file called <code class="hb-ic">slack_tokens.txt</code>:</li><li class="hb-step"><strong>Bot token</strong> (<code class="hb-ic">xoxb-…</code>) — OAuth &amp; Permissions → <em>Bot User OAuth Token</em>.</li><li class="hb-step"><strong>App-level token</strong> (<code class="hb-ic">xapp-…</code>) — Basic Information → <em>App-Level Tokens</em> → Generate → add scope <code class="hb-ic">connections:write</code> → copy.</li><li class="hb-step"><strong>Build the bot.</strong> Ask your AI, in your own words, to write a Slack bot that reads the two tokens from <code class="hb-ic">slack_tokens.txt</code>, listens for direct messages and mentions, and replies using your agent&#x27;s brain (the same one you already built). Let it install what it needs, then run it:</li></ol>
+<div class="only-py">
+<div class="hb-callout ">💻 <strong>RUN</strong></div>
+<div class="hb-codewrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre class="hb-code run"><code>pip install slack-bolt
+python slack_bot.py</code></pre></div>
+</div>
+<div class="only-js">
+<div class="hb-callout ">💻 <strong>RUN</strong></div>
+<div class="hb-codewrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre class="hb-code run"><code>npm install @slack/bolt
+node slack_bot.js</code></pre></div>
+</div>
+<ol class="hb-steps"><li class="hb-step">In Slack, find your app under <strong>Apps</strong> and <strong>DM it</strong>. You should get a reply in your voice. 🎉</li></ol>
+<div class="hb-callout ">🛟 Something breaks? Copy the error, paste it to Claude, and do what it says.</div>
+<h2 class="hb">Discord</h2>
+<div class="hb-callout ">🚧 <strong>Draft — being verified.</strong> These steps may change before the event. Check with a mentor on the day.</div>
+<ol class="hb-steps"><li class="hb-step">Go to <strong>discord.com/developers/applications</strong> → <strong>New Application</strong> (name it your agent).</li><li class="hb-step"><strong>Bot</strong> (left sidebar) → turn on <strong>Message Content Intent</strong>.</li><li class="hb-step">Copy the bot <strong>token</strong> into a file called <code class="hb-ic">discord_token.txt</code>.</li><li class="hb-step">Use the <strong>install link</strong> (Installation tab) to add the bot to a server you own.</li><li class="hb-step"><strong>Build the bot.</strong> Ask your AI to write a Discord bot that reads <code class="hb-ic">discord_token.txt</code> and replies — on a DM or when mentioned — using your agent&#x27;s brain. Then run it:</li></ol>
+<div class="only-py">
+<div class="hb-callout ">💻 <strong>RUN</strong></div>
+<div class="hb-codewrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre class="hb-code run"><code>pip install discord.py
+python discord_bot.py</code></pre></div>
+</div>
+<div class="only-js">
+<div class="hb-callout ">💻 <strong>RUN</strong></div>
+<div class="hb-codewrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre class="hb-code run"><code>npm install discord.js
+node discord_bot.js</code></pre></div>
+</div>
+<ol class="hb-steps"><li class="hb-step">Message the bot to test.</li></ol>
+<div class="hb-callout ">💡 Both bots use the <strong>same agent brain</strong> you already built — so any capability you add next works on Slack and Discord automatically.</div></div>
+<div class="section-panel" id="sec-capabilities"><h2 class="section-title">What Your Twin Can Do</h2><p class="section-sub">Pick what excites you and build it.</p><p class="hb">Your AI twin runs on one brain (<code class="hb-ic">claude -p</code>, no API key) with four plug-in modules wired in: <strong>Slack</strong>, <strong>Gmail (email)</strong>, a <strong>Scheduler (cronjobs)</strong>, and <strong>long-term Memory</strong>. Below are the capabilities those modules unlock — on their own and in combination. Everything happens in <em>your voice</em> (from your <code class="hb-ic">PERSONALITY.md</code>).</p>
+<p class="hb">Pick what excites you and build it — these are starting points, not a checklist.</p>
+<h2 class="hb">💬 Slack</h2>
+<ol class="hb-steps"><li class="hb-step"><strong>Summarize incoming messages</strong> — read a busy thread or channel and give you a tight summary of what was said and what needs your attention.</li><li class="hb-step"><strong>Read &amp; reply in your voice</strong> — when someone @mentions or DMs the bot, it reads the message and replies in-thread, sounding like you.</li><li class="hb-step"><strong>Send a message on demand</strong> — &quot;post &#x27;standup in 5&#x27; to #general&quot; or DM a teammate; it sends it for you.</li><li class="hb-step"><strong>Edit or delete a message it sent</strong> — &quot;change that to 7pm&quot; or &quot;delete that last message&quot; — it updates/removes its own posts.</li><li class="hb-step"><strong>Catch me up on a channel</strong> — pull the recent messages in a channel and tell you the gist so you don&#x27;t scroll.</li></ol>
+<h2 class="hb">📧 Gmail / Email</h2>
+<ol class="hb-steps"><li class="hb-step"><strong>Summarize your unread inbox</strong> — read your newest unread emails and give you a one-glance digest of who wants what.</li><li class="hb-step"><strong>Draft replies in your voice</strong> — read the emails worth answering and write a ready-to-send draft for each, saved to a file you review (never auto-sent).</li><li class="hb-step"><strong>Triage the inbox</strong> — separate the real human emails from the no-reply / marketing / automated noise, so you only spend time on what matters.</li><li class="hb-step"><strong>Draft a single reply on demand</strong> — paste any message and get back one polished reply in your voice, ready to copy-send.</li></ol>
+<h2 class="hb">⏰ Scheduler (Cronjobs)</h2>
+<ol class="hb-steps"><li class="hb-step"><strong>Schedule a one-off message/reminder</strong> — &quot;send me a hi message at 7:30pm&quot; — it fires at the exact time as a notification (and into your chat).</li><li class="hb-step"><strong>Schedule a Slack message for later</strong> — &quot;post the launch note to #team at 9am tomorrow&quot; — it sends the Slack message at that time, unattended.</li><li class="hb-step"><strong>Set up recurring reminders</strong> — &quot;every weekday at 9am remind me about standup&quot; — repeating jobs via cron schedules.</li><li class="hb-step"><strong>Schedule a meeting / calendar event</strong> — &quot;set up a Google Meet with Sam tomorrow at 4pm&quot; — creates the calendar event at the given time <em>(uses the Google Calendar connector, web-authed like Gmail)</em>.</li></ol>
+<h2 class="hb">🧠 Memory</h2>
+<ol class="hb-steps"><li class="hb-step"><strong>Remember what you tell it</strong> — facts, preferences, people, decisions — saved durably and recalled across restarts.</li><li class="hb-step"><strong>Recall relevant context automatically</strong> — before every answer it pulls the most relevant past memories, so it never starts cold.</li><li class="hb-step"><strong>Answer &quot;what did we discuss about X?&quot;</strong> — query your own history and get the past context back, ranked and explainable.</li><li class="hb-step"><strong>Learn your voice &amp; preferences over time</strong> — memories that prove useful get promoted; the noise is forgotten, so recall sharpens the longer you run it.</li></ol>
+<h2 class="hb">🔗 Combined (modules working together)</h2>
+<ol class="hb-steps"><li class="hb-step"><strong>Read an email → summarize → remember the key facts</strong> for later recall, so a detail from today resurfaces when it&#x27;s relevant next week.</li><li class="hb-step"><strong>Recall context to write sharper replies</strong> — pull what it knows about a sender or topic and fold it into the email/Slack reply it drafts.</li><li class="hb-step"><strong>Scheduled daily digest</strong> — at a set time each morning, summarize your unread email + Slack and deliver the briefing to you automatically.</li></ol>
+<div class="hb-callout ">🔒 <strong>Read-only &amp; safe by design:</strong> the email module never sends or marks mail as read (it only drafts); the Slack bot only edits/deletes its <strong>own</strong> messages; memory is a local, rebuildable index. You stay in control — the twin prepares, you send.</div></div>
+<div class="section-panel" id="sec-demo"><h2 class="section-title">Demo</h2><p class="section-sub">Name it, polish it, show it on stage.</p><p class="hb">You&#x27;ve built a real agent. Last step: make it presentable, then show it on stage.</p>
+<h2 class="hb">Step 1 — Quick polish</h2>
+<p class="hb">Send your agent 3–4 messages and read the replies. If something feels off, tell your AI in your own words what to change — <em>&quot;too formal,&quot; &quot;keep replies shorter,&quot; &quot;more sarcasm,&quot; &quot;don&#x27;t use that emoji&quot;</em> — and let it update the personality. Do one more pass if needed. (No restart — it reads the personality fresh every reply.)</p>
+<div class="only-py">
+<div class="hb-callout ">💻 <strong>RUN</strong></div>
+<div class="hb-codewrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre class="hb-code run"><code>python core.py &quot;hey, what&#x27;s up&quot;</code></pre></div>
+</div>
+<div class="only-js">
+<div class="hb-callout ">💻 <strong>RUN</strong></div>
+<div class="hb-codewrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre class="hb-code run"><code>node core.js &quot;hey, what&#x27;s up&quot;</code></pre></div>
+</div>
+<h2 class="hb">Step 2 — Name your agent</h2>
+<p class="hb">Your agent needs an identity for the demo. If you named it in ideation, use that name everywhere — in its personality and on Slack. If not, name it now: tell your AI <em>&quot;my agent&#x27;s name is ___&quot;</em> and have it update the personality (and the Slack display name).</p>
+<h2 class="hb">Step 3 — The demo (on stage)</h2>
+<p class="hb">Keep it honest and simple — about a minute:</p>
+<ol class="hb-steps"><li class="hb-step">Introduce yourself.</li><li class="hb-step">Introduce your agent by name.</li><li class="hb-step">One line: what it does, and who it&#x27;s for.</li><li class="hb-step">Show it live — send a real message and let everyone see the real reply. On Slack? Show it replying in Slack.</li></ol>
+<div class="hb-callout ">💬 Show the real thing — don&#x27;t read a script or fake it. A live reply that sounds like <em>you</em> is the whole point.</div>
+<h2 class="hb">Step 4 — Before you go up</h2>
+<ul class="hb-list"><li class="hb-li">Have it already running (terminal / server / Slack open).</li><li class="hb-li">Have 2–3 messages ready to send.</li><li class="hb-li">If something breaks, stay calm and talk through what you built — everyone here knows it&#x27;s a 3-hour build.</li></ul>
+<p class="hb"><strong>You built a real personal AI agent. Go show it off.</strong> 🚀</p></div>
+<div class="section-panel" id="sec-troubleshooting"><div class="section-label">Help</div><h2 class="section-title">Troubleshooting</h2><p class="section-sub">Stuck? Start here.</p><p class="hb"><strong>Your AI is your debugger.</strong> Almost anything that breaks, you fix the same way: copy the <strong>exact error</strong> and paste it to Claude — in your build session, or at <a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a> — and ask it to fix it. It wrote the code; it can fix the code.</p>
+<h2 class="hb">The move that fixes most things</h2>
+<div class="hb-callout ">📋 Paste this to your AI, with the error:<br><em>&quot;I ran this and got an error — fix it: [paste the full error message]&quot;</em></div>
+<p class="hb">Then run it again. Repeat if it&#x27;s not fixed the first time. Stay calm — this back-and-forth <strong>is</strong> building.</p>
+<hr class="hb-hr">
+<h2 class="hb">A few specifics worth knowing</h2>
+<p class="hb"><strong>&quot;Address already in use&quot; (a port is busy)</strong><br>Something&#x27;s already running on that port. Stop the other one (press <strong>Ctrl+C</strong> in its terminal), or ask your AI to <em>&quot;run it on a different port.&quot;</em></p>
+<p class="hb"><strong>Weird characters / emoji error (Windows)</strong><br>Don&#x27;t fix this by hand — tell your AI: <em>&quot;make the code print emojis correctly on Windows.&quot;</em> It&#x27;ll handle it in the code.</p>
+<p class="hb"><strong>&quot;command not recognized&quot; / &quot;not found&quot;</strong><br>Usually a tool isn&#x27;t installed yet, or your terminal needs a restart. <strong>Close and reopen your terminal</strong> and try again. Still stuck? Paste it to Claude.</p>
+<p class="hb"><strong>Replies stop / &quot;usage limit reached&quot;</strong><br>Switch to Sonnet — type **<code class="hb-ic">/model sonnet</code>** — and keep test messages short. Limits refill over time, so take a short break if needed.</p>
+<hr class="hb-hr">
+<p class="hb"><strong>Doesn&#x27;t sound like you?</strong> That&#x27;s not a bug — open the <strong>Demo</strong> step and tune the personality.</p>
+<p class="hb"><strong>Still stuck?</strong> Grab a volunteer. 🙂</p></div>
+<footer>GrowthX Buildathon · Build Your Own Personal AI Agent</footer>
+</div>
+</div>
+<script>
+        // === SECTION NAVIGATION ===
+        function dismissCover() {
+            const overlay = document.getElementById('coverOverlay');
+            overlay.style.opacity = '0';
+            overlay.style.pointerEvents = 'none';
+            document.querySelector('.handbook').classList.remove('cover-active');
+            setTimeout(() => { overlay.style.display = 'none' }, 500);
+            goToSection('welcome');
+        }
+        function goToSection(id) {
+            document.querySelectorAll('.section-panel').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
+            const panel = document.getElementById('sec-' + id);
+            if (panel) panel.classList.add('active');
+            const item = document.querySelector('[data-section="' + id + '"]');
+            if (item) item.classList.add('active');
+            // If going back to cover, show overlay
+            if (id === 'cover') {
+                const overlay = document.getElementById('coverOverlay');
+                overlay.style.display = 'flex';
+                overlay.style.opacity = '1';
+                overlay.style.pointerEvents = 'auto';
+                document.querySelector('.handbook').classList.add('cover-active');
+            }
+            window.scrollTo({ top: 0 });
+        }
+        document.querySelectorAll('.sidebar-item').forEach(item => {
+            item.addEventListener('click', () => {
+                if (item.classList.contains('locked')) return;
+                goToSection(item.dataset.section);
+            });
+        });
+        // === COVER ANIMATION — orb, voice bars, particles, parallax ===
+        (function () {
+            var canvas = document.getElementById('coverCanvas');
+            var overlay = document.getElementById('coverOverlay');
+            var depth = document.getElementById('coverDepth');
+            var inner = document.getElementById('coverInner');
+            if (!canvas || !overlay) return;
+            var ctx = canvas.getContext('2d');
+            var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            var W = 0, H = 0, DPR = 1;
+            function resize() {
+                DPR = Math.min(window.devicePixelRatio || 1, 2);
+                W = overlay.clientWidth || window.innerWidth;
+                H = overlay.clientHeight || window.innerHeight;
+                canvas.width = Math.round(W * DPR); canvas.height = Math.round(H * DPR);
+                canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
+                ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+            }
+            resize();
+            window.addEventListener('resize', resize);
+
+            // floating particles (density-scaled, capped for 60fps)
+            var N = Math.max(36, Math.min(90, Math.round(W * H / 15000)));
+            var ps = [];
+            for (var i = 0; i < N; i++) {
+                ps.push({
+                    x: Math.random() * W, y: Math.random() * H, r: 0.6 + Math.random() * 1.7,
+                    vx: (Math.random() - 0.5) * 0.12, vy: -0.04 - Math.random() * 0.11,
+                    a: 0.12 + Math.random() * 0.30, ph: Math.random() * Math.PI * 2, sp: 0.4 + Math.random() * 0.9
+                });
+            }
+
+            // cursor parallax (eased)
+            var tx = 0, ty = 0, cx = 0, cy = 0;
+            overlay.addEventListener('mousemove', function (e) { tx = (e.clientX / W - 0.5); ty = (e.clientY / H - 0.5); });
+            overlay.addEventListener('mouseleave', function () { tx = 0; ty = 0; });
+
+            // thick rounded (capsule) bar, drawn vertically; caller sets fillStyle/alpha
+            function bar(x, y, w, h) {
+                var r = w / 2; if (h < w) h = w;
+                ctx.beginPath();
+                ctx.moveTo(x, y + r);
+                ctx.lineTo(x, y + h - r);
+                ctx.arc(x + r, y + h - r, r, Math.PI, 0, false);
+                ctx.lineTo(x + w, y + r);
+                ctx.arc(x + r, y + r, r, 0, Math.PI, true);
+                ctx.closePath();
+                ctx.fill();
+            }
+
+            var t = 0, raf = null;
+            function frame() {
+                if (overlay.style.display === 'none') { raf = requestAnimationFrame(frame); return; }
+                t += 0.016;
+                cx += (tx - cx) * 0.05; cy += (ty - cy) * 0.05;
+                if (depth) depth.style.transform = 'translate(' + (cx * -22).toFixed(2) + 'px,' + (cy * -22).toFixed(2) + 'px)';
+                if (inner) inner.style.transform = 'translate(' + (cx * 10).toFixed(2) + 'px,' + (cy * 10).toFixed(2) + 'px)';
+                ctx.clearRect(0, 0, W, H);
+                // voice bars: thick rounded, center-anchored, smooth center-weighted swell
+                var baseY = H * 0.82, pitch = 22, bw = 6, half = W / 2, maxH = 70;
+                var g = ctx.createLinearGradient(0, baseY - maxH, 0, baseY + maxH);
+                g.addColorStop(0, 'rgba(125,185,255,0)');
+                g.addColorStop(0.5, 'rgba(96,165,250,1)');
+                g.addColorStop(1, 'rgba(125,185,255,0)');
+                ctx.fillStyle = g;
+                for (var bx = pitch / 2; bx < W; bx += pitch) {
+                    var nx = (bx - half) / half;
+                    var env = Math.pow(Math.max(0, Math.cos(nx * 1.5708)), 1.4);
+                    var m = 0.5 + 0.30 * Math.sin(nx * 2.3 + t * 0.8) + 0.20 * Math.sin(nx * 4.0 - t * 0.5);
+                    if (m < 0) m = 0; else if (m > 1) m = 1;
+                    var amp = 4 + env * (8 + m * 54);
+                    ctx.globalAlpha = 0.22 + env * 0.5;
+                    bar(bx - bw / 2, baseY - amp, bw, amp * 2);
+                }
+                ctx.globalAlpha = 1;
+                // particles drifting + gently pulled toward the audio contour
+                for (var i = 0; i < ps.length; i++) {
+                    var p = ps[i];
+                    p.x += p.vx + cx * 0.25; p.y += p.vy;
+                    var target = H * 0.80 + Math.sin(p.x * 0.006 + t * 0.6 + p.ph) * 42 * p.sp;
+                    p.y += (target - p.y) * 0.0008;
+                    if (p.y < -12) { p.y = H + 12; p.x = Math.random() * W; }
+                    if (p.x < -12) p.x = W + 12; if (p.x > W + 12) p.x = -12;
+                    ctx.beginPath();
+                    ctx.arc(p.x + cx * 16 * p.sp, p.y, p.r, 0, Math.PI * 2);
+                    ctx.fillStyle = 'rgba(147,197,253,' + p.a.toFixed(3) + ')';
+                    ctx.fill();
+                }
+                if (!reduce) raf = requestAnimationFrame(frame);
+            }
+            frame();
+        })();
+var STARTER_FILES = {"IDEATION.md": "# Ideation Phase Rules \u2014 Build Your Digital Twin\n\n**Paste this whole file into Claude (claude.ai) or ChatGPT, then say: \"Run my digital-twin interview.\"**\n\nYou (the AI) are running **Phase 1 of a buildathon**. Your job is to learn **how this person texts**,\nthen hand them a finished `PERSONALITY.md` file, a **name** for their agent, and a **language** pick.\nThis whole phase must take **15\u201320 minutes**. Keep it fast and low-effort for them.\n\n---\n\n## CORE RULES\n\n- **Do NOT write any code.** This phase is only the interview + one output file.\n- **You are building a *digital twin*, not an app** \u2014 an agent that texts the way *this person* texts\n  (their voice, slang, humor), so it can reply as them when they're away.\n- **Ask ONE question at a time. Never send all questions at once.** Send a question, wait for the answer,\n  then send the next. This keeps it light and step-by-step.\n- **Every question is a tick-box.** Show the options with brackets and tell them to **tick one by putting\n  an `x` in the brackets**, like `[x]`, and send it back. Minimal typing \u2014 they just tick and reply.\n- **One question per message.** After they tick an answer, confirm in a few words and move to the next number.\n- **Don't let anyone stall.** If they're unsure, recommend a sensible default, mark it, and move on.\n- **Stay on time.** 10 quick ticks, then generate the file. Don't over-interview.\n\n---\n\n## STEP 1 \u2014 The interview (ask these ONE AT A TIME, in order)\n\nOpen with one line: *\"Quick interview about how you text \u2014 I'll ask one at a time. Just tick an option\n(put an `x` in the brackets) and send it back. Ready? Here's Q1\u2026\"*\n\nThen send **Q1 only**. Wait for the tick. Then send **Q2 only**. And so on.\n\n**Q1 \u2014 Language**\n```\n- [ ] English\n- [ ] Hinglish (Hindi + English in English letters \u2014 \"haan yaar, kal dekhte hai\")\n- [ ] English + another language: ____________\n```\n\n**Q2 \u2014 Tone** (tick up to two)\n```\n- [ ] Casual & friendly\n- [ ] Witty & sarcastic\n- [ ] Calm & thoughtful\n- [ ] High-energy & hype\n```\n\n**Q3 \u2014 Message length**\n```\n- [ ] Short \u2014 a line or two\n- [ ] Medium \u2014 a couple of sentences\n- [ ] Long \u2014 I write paragraphs\n```\n\n**Q4 \u2014 How my messages look**\n```\n- [ ] Mostly lowercase, relaxed, minimal punctuation\n- [ ] Proper capitalisation & punctuation\n- [ ] Stretched words & dots (\"heyyy\", \"noooo\", \"...\")\n```\n\n**Q5 \u2014 Emojis**\n```\n- [ ] Almost never\n- [ ] Sometimes \u2014 a few when they fit\n- [ ] A lot \u2014 they're part of how I talk\n```\n\n**Q6 \u2014 How I greet & what I call people**\n```\n- [ ] \"hey\" / \"heyy\" + \"yaar\" / \"bro\" / \"bhai\"\n- [ ] \"yo\" / \"sup\" + name or nickname\n- [ ] \"hi\" / \"hello\" + their actual name\n- [ ] My own opener: ____________\n```\n\n**Q7 \u2014 My humor** (tick up to two)\n```\n- [ ] Playful roasting / teasing\n- [ ] Dry sarcasm & one-liners\n- [ ] Wholesome & warm\n- [ ] Silly / random energy\n- [ ] I keep it mostly serious\n```\n\n**Q8 \u2014 Topics I light up on** (tick any)\n```\n- [ ] Tech & startups\n- [ ] Movies / sports / pop culture\n- [ ] Life & relationships\n- [ ] Fitness / food / travel\n- [ ] Just vibing, casual chit-chat\n- [ ] Other: ____________\n```\n\n**Q9 \u2014 The agent must NEVER do this** (these are ON by default \u2014 untick only if you disagree)\n```\n- [x] Make firm commitments (meetings, money, big yes/no) \u2014 say \"let me get back on that\"\n- [x] Share private info (address, finances, personal details)\n- [x] Be rude or abusive, even if provoked\n- [x] Fake expertise \u2014 instead say \"let me check and tell you\"\n- [ ] Anything else: ____________\n```\n\n**Q10 \u2014 (Optional but gold) Speak as, + real texts**\n```\nSpeak as:  [ ] he/him   [ ] she/her   [ ] they/them   \u2190 (only needed for Hinglish/gendered verbs)\n\nPaste 2\u20133 real texts you've actually sent (any chat) \u2014 this is what makes it sound like you:\n> 1.\n> 2.\n> 3.\n```\nIf they skip the texts, that's fine \u2014 move on.\n\n---\n\n## STEP 2 \u2014 After the interview, produce the deliverables\n\n### 1. Write `PERSONALITY.md`\nTurn their answers into the file below. **Keep these exact headings** \u2014 the build phase loads it directly.\nWhere they left something blank, fill the sensible default (e.g. tone \u2192 casual & friendly, language \u2192 English).\n\n```markdown\n# Personality Profile \u2014 [Agent Name] (v0.1)\n\nThis is the \"soul\" of the agent. The building phase loads this into the system prompt\nso the AI talks like me.\n\n## Voice & Language\n- **Language:** \u2026\n- **Tone:** \u2026\n- **Message length:** \u2026\n- **Punctuation/style:** \u2026\n- **Emojis:** \u2026\n- **Grammatical gender (if relevant):** \u2026\n\n## How I Talk to People\n- **Greeting:** \u2026\n- **How I address people:** \u2026\n- **Default energy:** \u2026\n- **Sign-off:** \u2026\n\n## Personality & Humor\n- **Humor style:** \u2026\n- **Topics I light up on:** \u2026\n\n## Behavior Rules (what the twin must NEVER do)\n- \u2026\n\n## Natural Variation (don't sound robotic)\n- Vary openers \u2014 don't start every message the same way.\n- Vary the shape \u2014 sometimes react, sometimes ask, sometimes one short line.\n- Match the other person's energy and language.\n- Don't repeat the same emoji every message; often use none.\n\n## Quick Sample (target output style)\n> them: [example]\n> me: [reply in their voice]\n> them: [example]\n> me: [reply in their voice]\n```\n\nBuild the **Quick Sample** from their real texts in Q10 (or invent 2\u20133 that match their ticks).\nThen tell them: **\"Save this as `PERSONALITY.md` in your `my-twin` folder.\"**\n\n### 2. Suggest a name (don't block)\nOffer **3 name ideas** that fit their vibe, plus \"\u2026or your own.\" If they don't pick, go with your favourite\nand move on \u2014 they can rename later. They should walk out knowing the name.\n\n### 3. Confirm the language (default Python)\n\"Last thing \u2014 building in **Python** (default, easiest) or **JavaScript**?\" Unsure \u2192 say **Python**, move on.\n\n### 4. Close\n\"You're done with ideation \u2705 \u2014 you've got `PERSONALITY.md`, a name (**[name]**), and a language\n(**[lang]**). Take these into Phase 2 and start building.\"\n\n---\n\n## FORBIDDEN\n- Don't write code.\n- Don't send all the questions at once \u2014 **one question per message**, wait for the tick.\n- Don't leave them without a saved `PERSONALITY.md`, a name, and a language.\n- Don't block them on a perfect name \u2014 suggest and move on.\n", "BUILDING.md": "# Building Phase Rules \u2014 Build Your Digital Twin\n\n**Paste this whole file into Claude Code** (in your `my-twin` folder), then say:\n*\"Read my PERSONALITY.md and help me build my agent \u2014 follow these rules, start with Iteration 0.\"*\n\nYou (the AI) are running **Phase 2 of a buildathon**: help the person build a personal AI agent\n(a \"digital twin\") that chats in their voice. Their voice is described in `PERSONALITY.md`.\n\n## THE BRAIN \u2014 how the agent thinks (most important rule)\n\nThe agent's \"brain\" is the **Claude CLI in print mode** \u2014 **NOT** the Anthropic API, and **NEVER** an API key.\n\n- The person is already signed into Claude Code, so the command `claude -p` answers prompts using their\n  existing subscription \u2014 **no API key, no extra cost**. (An API key costs money and they don't have one.)\n- So the agent's code must call `claude -p` as a **subprocess**: build ONE prompt from `PERSONALITY.md`\n  + the conversation so far, send it in, and read the reply from standard output.\n\nPython:\n```python\nimport subprocess\nreply = subprocess.run(\"claude -p --model sonnet\",\n    input=prompt, shell=True, capture_output=True, text=True).stdout.strip()\n```\n\nNode.js:\n```javascript\nconst { execSync } = require(\"child_process\");\nconst reply = execSync(\"claude -p --model sonnet\", { input: prompt, encoding: \"utf8\" }).trim();\n```\n\n- **Codex users:** use `codex exec -` instead of `claude -p --model sonnet`.\n- **Never** import the `anthropic` / `openai` SDK or read an API key. If you're about to, stop and use the CLI subprocess instead.\n\n## PRE-CHECK\nBefore building any feature, verify:\n- \"Is this feature in your IDEATION.md?\"\n- \"Which iteration are we on?\"\n- If out of scope: \"That's a later iteration or v0.2. Let's finish the current one first.\"\n\n## ITERATION MODEL\n\n**For this project (the digital twin):**\n- **Iteration 0** \u2014 a terminal chat loop: type a message \u2192 it replies in your voice via `claude -p` \u2192 repeat (Ctrl+C to quit).\n- **Iteration 1** \u2014 a cleaner chat app (labelled lines like `You:` / agent name), still no memory.\n- **Iteration 2** \u2014 add memory (the first *capability*) so it remembers earlier messages in the chat.\n\n### ITERATION 0 (20 min max)\nYour \"magic moment\" \u2014 the single most important feature.\n- Strictly terminal \u2014 NO UI\n- Create a script file (e.g., `core.js`, `main.py`) that can be run with `node core.js` or `python main.py`\n- Must produce visible output in terminal when run\n- If this takes >20 min, scope is too big \u2014 cut something\n\nIf Iteration 0 is taking too long:\n\"This is taking more than 20 minutes. Your scope is too big for a buildathon. What can we cut to get the core working faster?\"\n\n### ITERATION 1, 2, 3... (~1 hr each, \u00b130 min flexible)\nOne feature per iteration, end-to-end. Within each iteration, use layers:\n1. **Logic** \u2014 Core functionality, testable in terminal\n2. **UI** \u2014 Basic interface to interact with the logic\n3. **Polish** \u2014 Better messages, minor styling (skip if behind)\n\nTarget: 2\u20133 complete iterations.\n\n## BUILDING BEHAVIOR\n\n### 1. Plan Before Code\nFor any feature, output a mini-plan first:\n\n```\n\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\nITERATION [N]: [Feature Name]\n\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\n\nWHAT IT DOES:\n[One sentence]\n\nFILES TO CREATE/MODIFY:\n- [file 1]: [what changes]\n- [file 2]: [what changes]\n\nLAYERS:\n1. Logic: [what to build first]\n2. UI: [what interface]\n3. Polish: [what improvements, if time]\n\nPOTENTIAL ISSUES:\n- [Thing that might go wrong]\n\n\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\nProceed? (y/n)\n```\n\nWait for confirmation before writing code.\n\n### 2. Small Testable Chunks\nWrite code in pieces that can be tested immediately. After each piece:\n\n\"Test this now. Does it work?\n- If yes \u2192 Let's commit and continue\n- If no \u2192 What's the error?\"\n\nNever write more than 30\u201350 lines without a test checkpoint.\n\n### 3. Explain As You Go\nUser must understand every line.\n\n**Good:**\n```js\n// Check if user exists before accessing their data\n// The ?. is optional chaining - returns undefined instead of crashing\nconst userName = user?.name || 'Guest'\n```\n\n**Bad:**\n```js\nconst userName = user?.name || 'Guest'\n```\n\nIf something is complex, either add a comment explaining it, simplify it, or ask: \"Do you understand what this does?\"\n\n### 4. Resist Scope Creep\nWhen user says \"can we also add...\" or \"what if we...\":\n\n\"That's a later iteration. I've noted it. Let's finish Iteration [N] first.\"\n\n### 5. Checkpoint = Auto-Commit + Documentation\nWhen user says \"checkpoint\" (or similar), commit for them with a detailed message:\n\n```\ngit add .\ngit commit -m \"feat: [short description]\n\n- What: [what was built]\n- How: [approach taken]\n- Status: [working/partial/needs testing]\"\n```\n\nUse conventional commits: `feat:` (new feature / iteration complete), `fix:` (bug fix), `wip:` (work in progress save). After committing, confirm:\n\n\"Checkpoint saved: [commit hash]. This is your safe point. What's next?\"\n\nThe git history becomes the project documentation \u2014 no separate changelog needed.\n\n## RESPONSE FORMAT\n- **[ITERATION N - LAYER]** \u2014 Brief description\n- **[WHAT WE'RE BUILDING]** \u2014 One sentence\n- **[CODE]** \u2014 The actual code, with comments\n- **[TEST IT]** \u2014 How to verify this works\n- **[NEXT]** \u2014 What to do after this works\n- **[COMMIT]** \u2014 Reminder to commit\n\n## FORBIDDEN\n- Rewrite entire files (suggest targeted edits)\n- Add features not in IDEATION.md\n- Install dependencies without explaining why\n- Create multiple user types\n- Build authentication from scratch\n- Add \"nice to have\" features\n- Optimize before it works\n- Add error handling beyond console.log\n- Add loading states / animations\n- Make it mobile responsive\n- Skip to UI before logic works\n\n## ALLOWED SHORTCUTS\nActively encourage these for v0.1:\n- Hardcoded credentials (admin/admin123)\n- Console.log for error handling\n- Fake data in arrays\n- Desktop only\n- Basic styling (no custom CSS)\n- \"Skip login\" button\n- alert() instead of toasts\n- Page refresh instead of state updates\n\n## ITERATION 0 EXAMPLES\n\n**Good Iteration 0 (for the digital twin):**\n- `python core.py` \u2192 you type a message, it replies in your voice via `claude -p`, loops until Ctrl+C\n- `node core.js` \u2192 the same, in Node\n\n**Bad Iteration 0 (too big):**\n- A web or chat UI (that comes later)\n- Saving/remembering conversations (that's a capability \u2014 Iteration 2)\n- Connecting to Slack/Discord (that's Phase 3)\n"};
+
+function copyCode(btn){
+  var code = btn.parentElement.querySelector('code');
+  navigator.clipboard.writeText(code.innerText).then(function(){
+    var o = btn.textContent; btn.textContent = 'Copied!';
+    setTimeout(function(){ btn.textContent = o; }, 1400);
+  });
+}
+function copyFile(name, btn){
+  navigator.clipboard.writeText(STARTER_FILES[name]).then(function(){
+    var o = btn.textContent; btn.textContent = 'Copied!';
+    setTimeout(function(){ btn.textContent = o; }, 1400);
+  });
+}
+function downloadFile(name){
+  var blob = new Blob([STARTER_FILES[name]], {type:'text/markdown'});
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url; a.download = name;
+  document.body.appendChild(a); a.click();
+  document.body.removeChild(a); URL.revokeObjectURL(url);
+}
+
+
+function _mark(a,b,first){ var x=document.getElementById(a),y=document.getElementById(b); if(x)x.classList.toggle('on',first); if(y)y.classList.toggle('on',!first); }
+function _store(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+function _get(k,d){ try{ return localStorage.getItem(k)||d; }catch(e){ return d; } }
+function setTool(t){ document.body.classList.toggle('tool-codex', t==='codex'); _mark('tcl','tcx', t!=='codex'); _store('hb_tool', t); }
+function setOS(o){ document.body.classList.toggle('os-mac', o==='mac'); _mark('owin','omac', o!=='mac'); _store('hb_os', o); }
+function setLang(l){ document.body.classList.toggle('lang-js', l==='js'); _mark('lpy','ljs', l!=='js'); _store('hb_lang', l); }
+setTool(_get('hb_tool','claude')); setOS(_get('hb_os','win')); setLang(_get('hb_lang','py'));
+
+</script>
+</body>
+</html>

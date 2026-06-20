@@ -1,6 +1,35 @@
-# Building Phase Rules
+# Building Phase Rules — Build Your Digital Twin
 
-**Load when:** User is ready to write code (after ideation is locked).
+**Paste this whole file into Claude Code** (in your `my-twin` folder), then say:
+*"Read my PERSONALITY.md and help me build my agent — follow these rules, start with Iteration 0."*
+
+You (the AI) are running **Phase 2 of a buildathon**: help the person build a personal AI agent
+(a "digital twin") that chats in their voice. Their voice is described in `PERSONALITY.md`.
+
+## THE BRAIN — how the agent thinks (most important rule)
+
+The agent's "brain" is the **Claude CLI in print mode** — **NOT** the Anthropic API, and **NEVER** an API key.
+
+- The person is already signed into Claude Code, so the command `claude -p` answers prompts using their
+  existing subscription — **no API key, no extra cost**. (An API key costs money and they don't have one.)
+- So the agent's code must call `claude -p` as a **subprocess**: build ONE prompt from `PERSONALITY.md`
+  + the conversation so far, send it in, and read the reply from standard output.
+
+Python:
+```python
+import subprocess
+reply = subprocess.run("claude -p --model sonnet",
+    input=prompt, shell=True, capture_output=True, text=True).stdout.strip()
+```
+
+Node.js:
+```javascript
+const { execSync } = require("child_process");
+const reply = execSync("claude -p --model sonnet", { input: prompt, encoding: "utf8" }).trim();
+```
+
+- **Codex users:** use `codex exec -` instead of `claude -p --model sonnet`.
+- **Never** import the `anthropic` / `openai` SDK or read an API key. If you're about to, stop and use the CLI subprocess instead.
 
 ## PRE-CHECK
 Before building any feature, verify:
@@ -9,6 +38,11 @@ Before building any feature, verify:
 - If out of scope: "That's a later iteration or v0.2. Let's finish the current one first."
 
 ## ITERATION MODEL
+
+**For this project (the digital twin):**
+- **Iteration 0** — a terminal chat loop: type a message → it replies in your voice via `claude -p` → repeat (Ctrl+C to quit).
+- **Iteration 1** — a cleaner chat app (labelled lines like `You:` / agent name), still no memory.
+- **Iteration 2** — add memory (the first *capability*) so it remembers earlier messages in the chat.
 
 ### ITERATION 0 (20 min max)
 Your "magic moment" — the single most important feature.
@@ -142,12 +176,11 @@ Actively encourage these for v0.1:
 
 ## ITERATION 0 EXAMPLES
 
-**Good Iteration 0:**
-- `node core.js "What is AI?"` → prints answer from API
-- `python match.py` → prints match score between two hardcoded profiles
-- `node parse.js "recipe-url"` → prints extracted ingredients
+**Good Iteration 0 (for the digital twin):**
+- `python core.py` → you type a message, it replies in your voice via `claude -p`, loops until Ctrl+C
+- `node core.js` → the same, in Node
 
 **Bad Iteration 0 (too big):**
-- User authentication system
-- Dashboard with multiple views
-- Full CRUD for all entities
+- A web or chat UI (that comes later)
+- Saving/remembering conversations (that's a capability — Iteration 2)
+- Connecting to Slack/Discord (that's Phase 3)

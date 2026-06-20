@@ -1,4 +1,4 @@
-# Phase 3 — Go Live on Slack
+# Go Live
 
 Your agent runs in the terminal. Now put it on a **real chat app** so it replies to real messages — even when you're away.
 

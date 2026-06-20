@@ -1,19 +1,58 @@
-# Phase 2 — Build It
+# Build It
 
-Now in **Claude Code** (the terminal). Three small steps. **You write the prompts yourself** — figuring out what to ask for *is* the building. After each step: test it, then type `checkpoint` and hit Enter to save.
+Now you're in **Claude Code** (the terminal). Three small steps. **You write the prompts yourself** — figuring out what to ask for *is* the building. After each step: test it, then type `checkpoint` and hit Enter to save.
+
+**Kickoff — paste this once to start** (in Claude Code, inside your `my-twin` folder):
+
+📋 **PROMPT**
+```
+Read BUILDING.md and PERSONALITY.md in this folder, and follow BUILDING.md as your rules
+for this whole session.
+
+I'm building my personal AI agent — a digital twin that chats in my voice (described in
+PERSONALITY.md). Its brain must be the claude -p CLI I'm already signed into — no API key.
+
+Build everything in ONE language — Python (file named core.py) OR Node.js (core.js).
+Pick one, keep the same file names throughout, and don't rename files later.
+
+Start with Iteration 0 from BUILDING.md: plan it first, then build.
+```
+
+> 🧠 Your agent's brain is the **`claude -p`** command you're already signed into — **no API key, no cost.** (`BUILDING.md` enforces this, so you don't have to.)
+
+> ✍️ After this, **you write the prompts** — deciding what to ask for *is* the building. (Stuck? Each step has an optional example you can expand.)
 
 > 🛠️ Something breaks? Don't debug it alone — **paste the exact error back to Claude** and let it fix it.
 
 ## Iteration 0 — a tiny terminal program
 
-A read-and-answer loop you run in the terminal.
+A read-and-answer loop you run in the terminal. Your kickoff prompt already starts this — make sure what Claude builds does all of these:
 
-Write your own prompt. It should tell Claude to build a small program that:
+1. You run it from the terminal.
+2. It reads your `PERSONALITY.md`.
+3. It loops: waits for you to type a message → prints a reply in your voice (via `claude -p`) → waits for the next one.
+4. It exits when you press **Ctrl+C**.
 
-1. You run from the terminal.
-2. Reads your `PERSONALITY.md`.
-3. Loops: waits for you to type a message → prints a reply in your voice → waits for the next one.
-4. Exits when you press **Ctrl+C**.
+:::example
+:::py
+📋 **PROMPT**
+```
+Build a small Python program in a file named core.py that I run from the terminal.
+It reads my PERSONALITY.md, then loops: waits for me to type a message, sends my personality
++ my message to the claude -p CLI (as a subprocess), prints the reply in my voice, then waits
+for the next message. It exits on Ctrl+C. No API key — use claude -p. Plan it first, then build.
+```
+:::
+:::js
+📋 **PROMPT**
+```
+Build a small Node.js program in a file named core.js that I run from the terminal.
+It reads my PERSONALITY.md, then loops: waits for me to type a message, sends my personality
++ my message to the claude -p CLI (via child_process), prints the reply in my voice, then waits
+for the next message. It exits on Ctrl+C. No API key — use claude -p. Plan it first, then build.
+```
+:::
+:::
 
 Then run it in the terminal:
 
@@ -44,15 +83,16 @@ Write a prompt that asks Claude to:
 
 Run it the same way, chat with it, then type `checkpoint` and Enter.
 
-## Iteration 2 — give it memory (your first capability)
+## Iteration 2 — give it lasting memory
 
-Memory is your agent's first **capability**. Add it now.
+Right now it forgets everything when it restarts. Give it **persistent memory** — it saves the conversation to a file and loads it back, so it remembers across messages *and* restarts.
 
 Write a prompt that asks Claude to:
 
-1. Remember the earlier messages in the conversation.
-2. Use that history so its replies make sense in context.
+1. Save each message and reply to a file on disk (for example `memory.json`).
+2. Load that history when the app starts, and include it so replies stay in context.
+3. Make sure it survives a restart — not just memory inside one run.
 
-Run it, then test it: tell it something, then refer back to it a few messages later and see if it remembers. Type `checkpoint` and Enter.
+Run it, then test it: tell it something, **fully restart the app**, then ask about it — it should still know. Type `checkpoint` and Enter.
 
-> ✅ You now have a real app that chats like you **and** remembers. Next: put it somewhere people can actually message it.
+> ✅ You now have an app that chats like you **and** remembers across restarts. Next: put it somewhere people can actually message it.

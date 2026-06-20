@@ -1,6 +1,6 @@
-# Phase 1 — Ideation
+# Ideation
 
-Decide **who your agent is** and **what it does**. No code in this phase.
+Decide **who your agent is** — its voice, its humor, how it texts. No code in this phase. **Takes 15–20 minutes.**
 
 > 🌐 Do this on **Claude web (claude.ai) or ChatGPT — not Claude Code.** It keeps your Claude Code usage fresh for the actual build later.
 
@@ -8,12 +8,12 @@ Decide **who your agent is** and **what it does**. No code in this phase.
 
 1. Open **claude.ai** (or ChatGPT) in your browser.
 2. Give it the **`IDEATION.md`** rules — copy or download them from the Starter Files box above and paste them into the chat.
-3. In **your own words**, tell it what you're building: a personal AI agent that chats like you. Don't paste a script — just talk about your idea.
-4. Let it **interview you**. It'll ask quick multiple-choice questions about how you talk — tone, language, emojis, greetings, humor, boundaries, topics. Answer them.
-5. Ask it to turn your answers into a **`PERSONALITY.md`** file. Save that file into your `my-twin` folder.
-6. **Name your agent.** You should walk out of this phase knowing its name.
-7. **Pick your language:** Python (default, easiest) or JavaScript.
+3. Tell it: **"I'm building a personal AI agent that chats like me. Interview me."** No script needed — that one line kicks it off.
+4. It walks you through **about 10 quick questions, one at a time** — how you text (tone, language, emojis, greetings, humor, boundaries, topics). Each is a tick-box: put an `x` in the brackets next to what fits you and send it back. Leave one unsure and it picks a sensible default.
+5. It writes you a **`PERSONALITY.md`**. Save it into your `my-twin` folder.
+6. It suggests a few **names** — pick one. You should walk out knowing your agent's name.
+7. Confirm your **language:** Python (default, easiest) or JavaScript.
 
 > 💡 The name matters — you'll introduce your agent by name when you demo it on stage.
 
-When you have a `PERSONALITY.md` and a name, you're ready to build.
+When you have a saved `PERSONALITY.md`, a name, and a language, you're ready to build.
