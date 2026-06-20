@@ -183,4 +183,4 @@ echo "say hello in one word" | codex exec -
 - **"not recognized" / "command not found"** → close your IDE and reopen it (the terminal picks up new installs), then try again.
 - **Windows: Python still not found** → reinstall it and make sure **"Add Python to PATH"** is ticked.
 - **Login problems** → run `claude` (or `codex login`) again and finish the browser sign-in.
-- **Still stuck?** Come 15 minutes early on event day — a mentor will get you set up quickly.
+- **Still stuck?** Come 15 minutes early on event day — we will get you set up quickly.
