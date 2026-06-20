@@ -1327,12 +1327,13 @@
 .sf-btn{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;background:var(--blue);color:#fff;border:0;border-radius:8px;padding:8px 16px;cursor:pointer}
 .sf-btn:hover{opacity:.9}
 .sf-btn.ghost{background:var(--white);color:var(--blue);border:1.5px solid var(--blue)}
-/* toggles: Tool / Computer / Language */
+/* per-section toggles (Tool / Computer / Language) */
 .only-js,.only-codex,.only-mac{display:none}
 body.lang-js .only-py{display:none} body.lang-js .only-js{display:block}
 body.tool-codex .only-claude{display:none} body.tool-codex .only-codex{display:block}
 body.os-mac .only-win{display:none} body.os-mac .only-mac{display:block}
-.langbar{position:sticky;top:0;z-index:50;display:flex;gap:18px;align-items:center;flex-wrap:wrap;background:var(--bg);padding:14px 0 12px;margin:0 0 10px;border-bottom:1px solid var(--line)}
+.sectoggle{display:flex;gap:18px;align-items:center;flex-wrap:wrap;background:var(--white);border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin:4px 0 22px}
+.sectoggle-hint{font-size:11px;font-weight:700;color:var(--faint);text-transform:uppercase;letter-spacing:.08em}
 .tgroup{display:flex;gap:6px;align-items:center}
 .tgroup .lab{font-size:10px;font-weight:700;color:var(--faint);text-transform:uppercase;letter-spacing:.08em;margin-right:2px}
 .lang-btn{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;background:var(--white);color:var(--mid);border:1px solid var(--line);border-radius:8px;padding:6px 13px;cursor:pointer}
@@ -1351,12 +1352,11 @@ body.os-mac .only-win{display:none} body.os-mac .only-mac{display:block}
 <div class="sidebar-group"><div class="sidebar-group-label">Build</div>
 <div class="sidebar-item" data-section="ideation"><span>Ideation</span><span class="num">03</span></div>
 <div class="sidebar-item" data-section="building"><span>Build</span><span class="num">04</span></div>
-<div class="sidebar-item" data-section="golive"><span>Go Live</span><span class="num">05</span></div>
-<div class="sidebar-item" data-section="capabilities"><span>Capabilities</span><span class="num">06</span></div>
-<div class="sidebar-item" data-section="demo"><span>Demo</span><span class="num">07</span></div>
+<div class="sidebar-item" data-section="capabilities"><span>Capabilities</span><span class="num">05</span></div>
+<div class="sidebar-item" data-section="demo"><span>Demo</span><span class="num">06</span></div>
 </div>
 <div class="sidebar-group"><div class="sidebar-group-label">Help</div>
-<div class="sidebar-item" data-section="troubleshooting"><span>Troubleshooting</span><span class="num">08</span></div>
+<div class="sidebar-item" data-section="troubleshooting"><span>Troubleshooting</span><span class="num">07</span></div>
 </div>
 </nav>
 <div class="main-content">
@@ -1373,7 +1373,6 @@ body.os-mac .only-win{display:none} body.os-mac .only-mac{display:block}
   </div>
 </div>
 
-<div class="langbar"><span class="tgroup"><span class="lab">Tool</span><button class="lang-btn" id="tcl" onclick="setTool('claude')">Claude</button><button class="lang-btn" id="tcx" onclick="setTool('codex')">Codex</button></span><span class="tgroup"><span class="lab">Computer</span><button class="lang-btn" id="owin" onclick="setOS('win')">🖥️ Windows</button><button class="lang-btn" id="omac" onclick="setOS('mac')">🍎 macOS</button></span><span class="tgroup"><span class="lab">Language</span><button class="lang-btn" id="lpy" onclick="setLang('py')">🐍 Python</button><button class="lang-btn" id="ljs" onclick="setLang('js')">🟨 JavaScript</button></span></div>
 <div class="section-panel" id="sec-welcome"><div class="section-label">Start Here</div><h2 class="section-title">Welcome</h2><p class="section-sub">What today is — and how to get the most from it.</p><p class="hb">You&#x27;re here to build your own <strong>personal AI agent</strong> today — and demo it live on stage by the end. Not a slide, not a mockup: a real agent that <em>you</em> built, running in front of the room.</p>
 <p class="hb">There&#x27;s no prize to chase. The reward is the thing you walk out with, and the moment you show it actually working.</p>
 <h2 class="hb">What to expect</h2>
@@ -1381,7 +1380,7 @@ body.os-mac .only-win{display:none} body.os-mac .only-mac{display:block}
 <h2 class="hb">How the day runs</h2>
 <p class="hb"><strong>Kickoff → Build → Demo.</strong> We get everyone set up, you build through a few short phases at your own pace, and we close with everyone showing what they made.</p>
 <p class="hb">One thing before you come: do the quick setup in <strong>Before You Arrive</strong> tonight. It saves your first hour for building instead of installing.</p></div>
-<div class="section-panel" id="sec-before"><div class="section-label">Setup</div><h2 class="section-title">Before You Arrive</h2><p class="section-sub">Install everything tonight — about 15 minutes.</p><p class="hb">Spend about <strong>15 minutes tonight</strong> so you arrive ready to build. You only need two things: <strong>Node.js</strong> and <strong>one AI tool</strong> (Claude Code recommended). Once Claude is installed, it can set up anything else for you on the day — so this list is short on purpose.</p>
+<div class="section-panel" id="sec-before"><div class="section-label">Setup</div><h2 class="section-title">Before You Arrive</h2><p class="section-sub">Install everything tonight — about 15 minutes.</p><div class="sectoggle"><span class="sectoggle-hint">Showing for:</span><span class="tgroup"><span class="lab">AI tool</span><button class="lang-btn" data-axis="tool" data-val="claude" onclick="setAxis('tool','claude')">Claude</button><button class="lang-btn" data-axis="tool" data-val="codex" onclick="setAxis('tool','codex')">Codex</button></span><span class="tgroup"><span class="lab">Computer</span><button class="lang-btn" data-axis="os" data-val="win" onclick="setAxis('os','win')">🖥️ Windows</button><button class="lang-btn" data-axis="os" data-val="mac" onclick="setAxis('os','mac')">🍎 macOS</button></span></div><p class="hb">Spend about <strong>15 minutes tonight</strong> so you arrive ready to build. You only need two things: <strong>Node.js</strong> and <strong>one AI tool</strong> (Claude Code recommended). Once Claude is installed, it can set up anything else for you on the day — so this list is short on purpose.</p>
 <div class="hb-callout ">🧘 You don&#x27;t need to understand all of it. Install it, run the check at the bottom, and you&#x27;re set. Mentors will fix anything that didn&#x27;t work tomorrow.</div>
 <div class="hb-callout ">⚙️ Use the <strong>Tool</strong> and <strong>Computer</strong> toggles at the top of this page to match what you have.</div>
 <h2 class="hb">1. Install Node.js</h2>
@@ -1433,7 +1432,7 @@ body.os-mac .only-win{display:none} body.os-mac .only-mac{display:block}
 <ol class="hb-steps"><li class="hb-step">Open <strong>claude.ai</strong> (or ChatGPT) in your browser.</li><li class="hb-step">Give it the **<code class="hb-ic">IDEATION.md</code>** rules — copy or download them from the Starter Files box above and paste them into the chat.</li><li class="hb-step">Tell it: <strong>&quot;I&#x27;m building a personal AI agent that chats like me. Interview me.&quot;</strong> No script needed — that one line kicks it off.</li><li class="hb-step">It walks you through <strong>about 10 quick questions, one at a time</strong> — how you text (tone, language, emojis, greetings, humor, boundaries, topics). Each is a tick-box: put an <code class="hb-ic">x</code> in the brackets next to what fits you and send it back. Leave one unsure and it picks a sensible default.</li><li class="hb-step">It writes you a **<code class="hb-ic">PERSONALITY.md</code>**. Save it into your <code class="hb-ic">my-twin</code> folder.</li><li class="hb-step">It suggests a few <strong>names</strong> — pick one. You should walk out knowing your agent&#x27;s name.</li><li class="hb-step">Confirm your <strong>language:</strong> Python (default, easiest) or JavaScript.</li></ol>
 <div class="hb-callout ">💡 The name matters — you&#x27;ll introduce your agent by name when you demo it on stage.</div>
 <p class="hb">When you have a saved <code class="hb-ic">PERSONALITY.md</code>, a name, and a language, you&#x27;re ready to build.</p></div>
-<div class="section-panel" id="sec-building"><h2 class="section-title">Build It</h2><p class="section-sub">From a terminal loop to a real app.</p><div class="starter"><div class="starter-head">📥 Starter file — give this to Claude Code</div><div class="sf-card"><div class="sf-name">BUILDING.md</div><div class="sf-desc">The rules Claude Code follows to build your agent.</div><div class="sf-acts"><button class="sf-btn" onclick="copyFile('BUILDING.md', this)">Copy</button><button class="sf-btn ghost" onclick="downloadFile('BUILDING.md')">Download</button></div></div></div><p class="hb">Now you&#x27;re in <strong>Claude Code</strong> (the terminal). Three small steps. <strong>You write the prompts yourself</strong> — figuring out what to ask for <em>is</em> the building. After each step: test it, then type <code class="hb-ic">checkpoint</code> and hit Enter to save.</p>
+<div class="section-panel" id="sec-building"><h2 class="section-title">Build It</h2><p class="section-sub">From a terminal loop to a real app.</p><div class="sectoggle"><span class="sectoggle-hint">Showing for:</span><span class="tgroup"><span class="lab">Language</span><button class="lang-btn" data-axis="lang" data-val="py" onclick="setAxis('lang','py')">🐍 Python</button><button class="lang-btn" data-axis="lang" data-val="js" onclick="setAxis('lang','js')">🟨 JavaScript</button></span></div><div class="starter"><div class="starter-head">📥 Starter file — give this to Claude Code</div><div class="sf-card"><div class="sf-name">BUILDING.md</div><div class="sf-desc">The rules Claude Code follows to build your agent.</div><div class="sf-acts"><button class="sf-btn" onclick="copyFile('BUILDING.md', this)">Copy</button><button class="sf-btn ghost" onclick="downloadFile('BUILDING.md')">Download</button></div></div></div><p class="hb">Now you&#x27;re in <strong>Claude Code</strong> (the terminal). Three small steps. <strong>You write the prompts yourself</strong> — figuring out what to ask for <em>is</em> the building. After each step: test it, then type <code class="hb-ic">checkpoint</code> and hit Enter to save.</p>
 <p class="hb"><strong>Kickoff — paste this once to start</strong> (in Claude Code, inside your <code class="hb-ic">my-twin</code> folder):</p>
 <div class="hb-callout ">📋 <strong>PROMPT</strong></div>
 <div class="hb-codewrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre class="hb-code prompt"><code>Read BUILDING.md and PERSONALITY.md in this folder, and follow BUILDING.md as your rules
@@ -1489,9 +1488,9 @@ for the next message. It exits on Ctrl+C. No API key — use claude -p. Plan it 
 <ol class="hb-steps"><li class="hb-step">Save each message and reply to a file on disk (for example <code class="hb-ic">memory.json</code>).</li><li class="hb-step">Load that history when the app starts, and include it so replies stay in context.</li><li class="hb-step">Make sure it survives a restart — not just memory inside one run.</li></ol>
 <p class="hb">Run it, then test it: tell it something, <strong>fully restart the app</strong>, then ask about it — it should still know. Type <code class="hb-ic">checkpoint</code> and Enter.</p>
 <div class="hb-callout ">✅ You now have an app that chats like you <strong>and</strong> remembers across restarts. Next: put it somewhere people can actually message it.</div></div>
-<div class="section-panel" id="sec-golive"><h2 class="section-title">Go Live</h2><p class="section-sub">Put your agent on a chat platform.</p><p class="hb">Your agent runs in the terminal. Now put it on a <strong>real chat app</strong> so it replies to real messages — even when you&#x27;re away.</p>
-<div class="hb-callout ">🎯 Message your agent in Slack and get a reply, in your voice.</div>
-<h2 class="hb">Slack</h2>
+<div class="section-panel" id="sec-capabilities"><h2 class="section-title">What Your Twin Can Do</h2><p class="section-sub">Go live on Slack, then pick what to build.</p><div class="sectoggle"><span class="sectoggle-hint">Showing for:</span><span class="tgroup"><span class="lab">Language</span><button class="lang-btn" data-axis="lang" data-val="py" onclick="setAxis('lang','py')">🐍 Python</button><button class="lang-btn" data-axis="lang" data-val="js" onclick="setAxis('lang','js')">🟨 JavaScript</button></span></div><p class="hb">Your AI twin runs on one brain (<code class="hb-ic">claude -p</code>, no API key) with four plug-in modules: <strong>Slack</strong>, <strong>Gmail (email)</strong>, a <strong>Scheduler (cronjobs)</strong>, and <strong>long-term Memory</strong>. First put it on Slack so it can act in a real chat — then add the capabilities those modules unlock. Everything happens in <em>your voice</em> (from your <code class="hb-ic">PERSONALITY.md</code>).</p>
+<p class="hb">Pick what excites you and build it — these are starting points, not a checklist.</p>
+<h2 class="hb">🚀 Go live — put it on Slack</h2>
 <p class="hb">A Slack <strong>app manifest</strong> sets up the whole app in one paste — no clicking through scopes, events, and settings by hand.</p>
 <ol class="hb-steps"><li class="hb-step">Go to <strong>api.slack.com/apps</strong> → <strong>Create New App</strong> → <strong>From an app manifest</strong> → pick your workspace.</li><li class="hb-step">Delete the sample, paste the manifest below, and change both <strong>&quot;name&quot;</strong> values to your agent&#x27;s name. Create the app.</li></ol>
 <div class="hb-callout ">📋 <strong>Copy this manifest</strong> (change the two names to your agent&#x27;s):</div>
@@ -1521,23 +1520,10 @@ node slack_bot.js</code></pre></div>
 </div>
 <ol class="hb-steps"><li class="hb-step">In Slack, find your app under <strong>Apps</strong> and <strong>DM it</strong>. You should get a reply in your voice. 🎉</li></ol>
 <div class="hb-callout ">🛟 Something breaks? Copy the error, paste it to Claude, and do what it says.</div>
-<h2 class="hb">Discord</h2>
-<div class="hb-callout ">🚧 <strong>Draft — being verified.</strong> These steps may change before the event. Check with a mentor on the day.</div>
-<ol class="hb-steps"><li class="hb-step">Go to <strong>discord.com/developers/applications</strong> → <strong>New Application</strong> (name it your agent).</li><li class="hb-step"><strong>Bot</strong> (left sidebar) → turn on <strong>Message Content Intent</strong>.</li><li class="hb-step">Copy the bot <strong>token</strong> into a file called <code class="hb-ic">discord_token.txt</code>.</li><li class="hb-step">Use the <strong>install link</strong> (Installation tab) to add the bot to a server you own.</li><li class="hb-step"><strong>Build the bot.</strong> Ask your AI to write a Discord bot that reads <code class="hb-ic">discord_token.txt</code> and replies — on a DM or when mentioned — using your agent&#x27;s brain. Then run it:</li></ol>
-<div class="only-py">
-<div class="hb-callout ">💻 <strong>RUN</strong></div>
-<div class="hb-codewrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre class="hb-code run"><code>pip install discord.py
-python discord_bot.py</code></pre></div>
-</div>
-<div class="only-js">
-<div class="hb-callout ">💻 <strong>RUN</strong></div>
-<div class="hb-codewrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre class="hb-code run"><code>npm install discord.js
-node discord_bot.js</code></pre></div>
-</div>
-<ol class="hb-steps"><li class="hb-step">Message the bot to test.</li></ol>
-<div class="hb-callout ">💡 Both bots use the <strong>same agent brain</strong> you already built — so any capability you add next works on Slack and Discord automatically.</div></div>
-<div class="section-panel" id="sec-capabilities"><h2 class="section-title">What Your Twin Can Do</h2><p class="section-sub">Pick what excites you and build it.</p><p class="hb">Your AI twin runs on one brain (<code class="hb-ic">claude -p</code>, no API key) with four plug-in modules wired in: <strong>Slack</strong>, <strong>Gmail (email)</strong>, a <strong>Scheduler (cronjobs)</strong>, and <strong>long-term Memory</strong>. Below are the capabilities those modules unlock — on their own and in combination. Everything happens in <em>your voice</em> (from your <code class="hb-ic">PERSONALITY.md</code>).</p>
-<p class="hb">Pick what excites you and build it — these are starting points, not a checklist.</p>
+<h3 class="hb">Discord (optional · 🚧 draft)</h3>
+<div class="hb-callout ">These steps may change before the event — check with a mentor on the day.</div>
+<ol class="hb-steps"><li class="hb-step"><strong>discord.com/developers/applications</strong> → <strong>New Application</strong> (name it your agent).</li><li class="hb-step"><strong>Bot</strong> → turn on <strong>Message Content Intent</strong>. Copy the bot <strong>token</strong> into <code class="hb-ic">discord_token.txt</code>.</li><li class="hb-step">Use the <strong>install link</strong> (Installation tab) to add the bot to a server you own.</li><li class="hb-step">Ask your AI to write a Discord bot that reads <code class="hb-ic">discord_token.txt</code> and replies on a DM or mention, then run it (<code class="hb-ic">pip install discord.py</code> → <code class="hb-ic">python discord_bot.py</code>, or <code class="hb-ic">npm install discord.js</code> → <code class="hb-ic">node discord_bot.js</code>).</li></ol>
+<div class="hb-callout ">💡 Both bots use the <strong>same brain</strong> — so every capability below works on whichever platform you connect.</div>
 <h2 class="hb">💬 Slack</h2>
 <ol class="hb-steps"><li class="hb-step"><strong>Summarize incoming messages</strong> — read a busy thread or channel and give you a tight summary of what was said and what needs your attention.</li><li class="hb-step"><strong>Read &amp; reply in your voice</strong> — when someone @mentions or DMs the bot, it reads the message and replies in-thread, sounding like you.</li><li class="hb-step"><strong>Send a message on demand</strong> — &quot;post &#x27;standup in 5&#x27; to #general&quot; or DM a teammate; it sends it for you.</li><li class="hb-step"><strong>Edit or delete a message it sent</strong> — &quot;change that to 7pm&quot; or &quot;delete that last message&quot; — it updates/removes its own posts.</li><li class="hb-step"><strong>Catch me up on a channel</strong> — pull the recent messages in a channel and tell you the gist so you don&#x27;t scroll.</li></ol>
 <h2 class="hb">📧 Gmail / Email</h2>
@@ -1548,8 +1534,10 @@ node discord_bot.js</code></pre></div>
 <ol class="hb-steps"><li class="hb-step"><strong>Remember what you tell it</strong> — facts, preferences, people, decisions — saved durably and recalled across restarts.</li><li class="hb-step"><strong>Recall relevant context automatically</strong> — before every answer it pulls the most relevant past memories, so it never starts cold.</li><li class="hb-step"><strong>Answer &quot;what did we discuss about X?&quot;</strong> — query your own history and get the past context back, ranked and explainable.</li><li class="hb-step"><strong>Learn your voice &amp; preferences over time</strong> — memories that prove useful get promoted; the noise is forgotten, so recall sharpens the longer you run it.</li></ol>
 <h2 class="hb">🔗 Combined (modules working together)</h2>
 <ol class="hb-steps"><li class="hb-step"><strong>Read an email → summarize → remember the key facts</strong> for later recall, so a detail from today resurfaces when it&#x27;s relevant next week.</li><li class="hb-step"><strong>Recall context to write sharper replies</strong> — pull what it knows about a sender or topic and fold it into the email/Slack reply it drafts.</li><li class="hb-step"><strong>Scheduled daily digest</strong> — at a set time each morning, summarize your unread email + Slack and deliver the briefing to you automatically.</li></ol>
-<div class="hb-callout ">🔒 <strong>Read-only &amp; safe by design:</strong> the email module never sends or marks mail as read (it only drafts); the Slack bot only edits/deletes its <strong>own</strong> messages; memory is a local, rebuildable index. You stay in control — the twin prepares, you send.</div></div>
-<div class="section-panel" id="sec-demo"><h2 class="section-title">Demo</h2><p class="section-sub">Name it, polish it, show it on stage.</p><p class="hb">You&#x27;ve built a real agent. Last step: make it presentable, then show it on stage.</p>
+<div class="hb-callout ">🔒 <strong>Read-only &amp; safe by design:</strong> the email module never sends or marks mail as read (it only drafts); the Slack bot only edits/deletes its <strong>own</strong> messages; memory is a local, rebuildable index. You stay in control — the twin prepares, you send.</div>
+<h2 class="hb">🔊 Voice (optional)</h2>
+<p class="hb">Want your agent to <em>speak</em> its replies? Use a <strong>free, open-source</strong> text-to-speech that runs on your machine — like <strong>Piper</strong> or <strong>Coqui TTS</strong> — instead of a paid voice API (those credits get expensive fast). Keep it <strong>opt-in</strong>, not the default.</p></div>
+<div class="section-panel" id="sec-demo"><h2 class="section-title">Demo</h2><p class="section-sub">Name it, polish it, show it on stage.</p><div class="sectoggle"><span class="sectoggle-hint">Showing for:</span><span class="tgroup"><span class="lab">Language</span><button class="lang-btn" data-axis="lang" data-val="py" onclick="setAxis('lang','py')">🐍 Python</button><button class="lang-btn" data-axis="lang" data-val="js" onclick="setAxis('lang','js')">🟨 JavaScript</button></span></div><p class="hb">You&#x27;ve built a real agent. Last step: make it presentable, then show it on stage.</p>
 <h2 class="hb">Step 1 — Quick polish</h2>
 <p class="hb">Send your agent 3–4 messages and read the replies. If something feels off, tell your AI in your own words what to change — <em>&quot;too formal,&quot; &quot;keep replies shorter,&quot; &quot;more sarcasm,&quot; &quot;don&#x27;t use that emoji&quot;</em> — and let it update the personality. Do one more pass if needed. (No restart — it reads the personality fresh every reply.)</p>
 <div class="only-py">
@@ -1735,13 +1723,18 @@ function downloadFile(name){
 }
 
 
-function _mark(a,b,first){ var x=document.getElementById(a),y=document.getElementById(b); if(x)x.classList.toggle('on',first); if(y)y.classList.toggle('on',!first); }
-function _store(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
-function _get(k,d){ try{ return localStorage.getItem(k)||d; }catch(e){ return d; } }
-function setTool(t){ document.body.classList.toggle('tool-codex', t==='codex'); _mark('tcl','tcx', t!=='codex'); _store('hb_tool', t); }
-function setOS(o){ document.body.classList.toggle('os-mac', o==='mac'); _mark('owin','omac', o!=='mac'); _store('hb_os', o); }
-function setLang(l){ document.body.classList.toggle('lang-js', l==='js'); _mark('lpy','ljs', l!=='js'); _store('hb_lang', l); }
-setTool(_get('hb_tool','claude')); setOS(_get('hb_os','win')); setLang(_get('hb_lang','py'));
+var _AX = { tool:{cls:'tool-codex',on:'codex',def:'claude'}, os:{cls:'os-mac',on:'mac',def:'win'}, lang:{cls:'lang-js',on:'js',def:'py'} };
+function setAxis(axis, val){
+  var a = _AX[axis]; if(!a) return;
+  document.body.classList.toggle(a.cls, val === a.on);
+  document.querySelectorAll('[data-axis="'+axis+'"]').forEach(function(b){ b.classList.toggle('on', b.dataset.val === val); });
+  try{ localStorage.setItem('hb_'+axis, val); }catch(e){}
+}
+Object.keys(_AX).forEach(function(axis){
+  var d = _AX[axis], v;
+  try{ v = localStorage.getItem('hb_'+axis) || d.def; }catch(e){ v = d.def; }
+  setAxis(axis, v);
+});
 
 </script>
 </body>
