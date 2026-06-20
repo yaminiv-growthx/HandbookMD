@@ -7,21 +7,11 @@ The event is 3 hours of building, not installing. If your laptop is set up the n
 ## Before you start, you'll need
 
 - A laptop (Windows or Mac) where you can install software (admin rights).
-- A stable internet connection.
 - An AI subscription you can log in to — either:
   - **Claude Pro or Max** (recommended — powers "Claude Code"), OR
   - **ChatGPT Plus/Pro** (powers "Codex")
 - About 15 minutes.
 
-## Quick checklist (tick all 7)
-
-- [ ] Node.js installed (version 20 or newer)
-- [ ] An IDE installed (VS Code recommended)
-- [ ] Your AI tool installed in the IDE terminal — Claude Code (recommended) or Codex
-- [ ] Logged in to your AI tool with your subscription
-- [ ] Python installed (3.10+) — for the Python build path
-- [ ] Git installed — to save your progress
-- [ ] Project folder created + everything verified (final step)
 
 ## Step 1 — Install Node.js (required)
 
@@ -124,24 +114,7 @@ git --version
 brew install git
 ```
 
-## Step 7 — Create your project folder
-
-Make an empty folder where your agent will live, then open it inside your IDE.
-
-**Windows (IDE terminal)**
-```powershell
-mkdir "$HOME\my-twin"
-```
-
-**macOS (IDE terminal)**
-```bash
-mkdir ~/my-twin
-```
-
-- In your IDE: **File → Open Folder →** choose your `my-twin` folder.
-- Download the two starter files — `IDEATION.md` and `BUILDING.md` (the organizers will share the link) — and move them into the `my-twin` folder.
-
-## Step 8 — Verify everything works
+## Step 7 — Verify everything works
 
 In your IDE terminal, run these. Each should print a version (or a reply) — not an error.
 
