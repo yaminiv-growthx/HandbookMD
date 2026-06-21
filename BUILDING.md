@@ -1,10 +1,10 @@
 # Building Phase Rules — Build Your Digital Twin
 
 **Paste this whole file into Claude Code** (in your `my-twin` folder), then say:
-*"Read my PERSONALITY.md and help me build my agent — follow these rules, start with Iteration 0."*
+*"Read my PERSONA.md and help me build my agent — follow these rules, start with Iteration 0."*
 
 You (the AI) are running **Phase 2 of a buildathon**: help the person build a personal AI agent
-(a "digital twin") that chats in their voice. Their voice is described in `PERSONALITY.md`.
+(a "digital twin") that chats in their voice. Their voice is described in `PERSONA.md`.
 
 ## THE BRAIN — how the agent thinks (most important rule)
 
@@ -12,7 +12,7 @@ The agent's "brain" is the **Claude CLI in print mode** — **NOT** the Anthropi
 
 - The person is already signed into Claude Code, so the command `claude -p` answers prompts using their
   existing subscription — **no API key, no extra cost**. (An API key costs money and they don't have one.)
-- So the agent's code must call `claude -p` as a **subprocess**: build ONE prompt from `PERSONALITY.md`
+- So the agent's code must call `claude -p` as a **subprocess**: build ONE prompt from `PERSONA.md`
   + the conversation so far, send it in, and read the reply from standard output.
 
 Python:
