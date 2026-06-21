@@ -1348,15 +1348,16 @@ body.os-mac .only-win{display:none} body.os-mac .only-mac{display:block}
 <div class="sidebar-group"><div class="sidebar-group-label">Start Here</div>
 <div class="sidebar-item" data-section="welcome"><span>Welcome</span><span class="num">01</span></div>
 <div class="sidebar-item" data-section="before"><span>Before You Arrive</span><span class="num">02</span></div>
+<div class="sidebar-item" data-section="logistics"><span>Logistics</span><span class="num">03</span></div>
 </div>
 <div class="sidebar-group"><div class="sidebar-group-label">Build</div>
-<div class="sidebar-item" data-section="ideation"><span>Ideation</span><span class="num">03</span></div>
-<div class="sidebar-item" data-section="building"><span>Build</span><span class="num">04</span></div>
-<div class="sidebar-item" data-section="capabilities"><span>Capabilities</span><span class="num">05</span></div>
-<div class="sidebar-item" data-section="demo"><span>Demo</span><span class="num">06</span></div>
+<div class="sidebar-item" data-section="ideation"><span>Ideation</span><span class="num">04</span></div>
+<div class="sidebar-item" data-section="building"><span>Build</span><span class="num">05</span></div>
+<div class="sidebar-item" data-section="capabilities"><span>Capabilities</span><span class="num">06</span></div>
+<div class="sidebar-item" data-section="demo"><span>Demo</span><span class="num">07</span></div>
 </div>
 <div class="sidebar-group"><div class="sidebar-group-label">Help</div>
-<div class="sidebar-item" data-section="troubleshooting"><span>Troubleshooting</span><span class="num">07</span></div>
+<div class="sidebar-item" data-section="troubleshooting"><span>Troubleshooting</span><span class="num">08</span></div>
 </div>
 </nav>
 <div class="main-content">
@@ -1428,6 +1429,22 @@ body.os-mac .only-win{display:none} body.os-mac .only-mac{display:block}
 </div>
 <div class="hb-callout ">✅ Got a version number and a one-word reply? You&#x27;re ready — see you tomorrow.</div>
 <div class="hb-callout ">💡 We may share a one-step setup script on the day, but doing this tonight means you can start building right away.</div></div>
+<div class="section-panel" id="sec-logistics"><div class="section-label">On the day</div><h2 class="section-title">Logistics</h2><p class="section-sub">Venue, Wi-Fi, and the day&#x27;s schedule.</p><p class="hb">Everything you need on the day. <em>(Organisers: replace the <strong>[bracketed]</strong> bits with the real details.)</em></p>
+<h2 class="hb">📍 Venue</h2>
+<p class="hb"><strong>[Venue name]</strong><br>[Address line 1]<br>[Area, City]</p>
+<p class="hb"><a href="[paste-maps-link]" target="_blank" rel="noopener">Open in Google Maps</a></p>
+<h2 class="hb">📶 Wi-Fi</h2>
+<p class="hb"><strong>Network</strong> — tap to copy:</p>
+<div class="hb-codewrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre class="hb-code"><code>[network-name]</code></pre></div>
+<p class="hb"><strong>Password</strong> — tap to copy:</p>
+<div class="hb-codewrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre class="hb-code"><code>[wifi-password]</code></pre></div>
+<div class="hb-callout ">📡 If the Wi-Fi is flaky, a phone hotspot is plenty — the build only needs light internet (your AI runs on your Claude login).</div>
+<h2 class="hb">🕘 Schedule</h2>
+<table class="hb-table"><thead><tr><th>Time</th><th>What</th></tr></thead><tbody><tr><td>[10:00]</td><td>Check-in &amp; setup</td></tr><tr><td>[10:30]</td><td>Kickoff</td></tr><tr><td>[10:45]</td><td>Build time</td></tr><tr><td>[1:30]</td><td>Lunch</td></tr><tr><td>[2:00]</td><td>Build time</td></tr><tr><td>[4:30]</td><td>Demos</td></tr></tbody></table>
+<h2 class="hb">🍴 Food &amp; breaks</h2>
+<p class="hb">[Lunch and snacks are provided — details here.]</p>
+<h2 class="hb">🆘 Need help?</h2>
+<p class="hb">Look for the <strong>GrowthX team / mentors</strong> — flag any of us anytime. Stuck on a step? That&#x27;s normal; grab a mentor and we&#x27;ll unblock you fast.</p></div>
 <div class="section-panel" id="sec-ideation"><h2 class="section-title">Ideation</h2><p class="section-sub">~15 min · core · done on Claude web.</p><div class="starter"><div class="starter-head">📥 Starter file — give this to Claude / ChatGPT</div><div class="sf-card"><div class="sf-name">IDEATION.md</div><div class="sf-desc">The rules your AI follows for the ideation interview.</div><div class="sf-acts"><button class="sf-btn" onclick="copyFile('IDEATION.md', this)">Copy</button><button class="sf-btn ghost" onclick="downloadFile('IDEATION.md')">Download</button></div></div></div><p class="hb">Decide <strong>who your agent is</strong> — its voice, its humor, how it texts. No code in this phase. <strong>Takes 15–20 minutes.</strong></p>
 <div class="hb-callout ">🌐 Do this on <strong>Claude web (claude.ai) or ChatGPT — not Claude Code.</strong> It keeps your Claude Code usage fresh for the actual build later.</div>
 <h2 class="hb">Steps</h2>
