@@ -1429,22 +1429,53 @@ body.os-mac .only-win{display:none} body.os-mac .only-mac{display:block}
 </div>
 <div class="hb-callout ">✅ Got a version number and a one-word reply? You&#x27;re ready — see you tomorrow.</div>
 <div class="hb-callout ">💡 We may share a one-step setup script on the day, but doing this tonight means you can start building right away.</div></div>
-<div class="section-panel" id="sec-logistics"><div class="section-label">On the day</div><h2 class="section-title">Logistics</h2><p class="section-sub">Venue, Wi-Fi, and the day&#x27;s schedule.</p><p class="hb">Everything you need on the day. <em>(Organisers: replace the <strong>[bracketed]</strong> bits with the real details.)</em></p>
-<h2 class="hb">📍 Venue</h2>
-<p class="hb"><strong>[Venue name]</strong><br>[Address line 1]<br>[Area, City]</p>
-<p class="hb"><a href="[paste-maps-link]" target="_blank" rel="noopener">Open in Google Maps</a></p>
-<h2 class="hb">📶 Wi-Fi</h2>
-<p class="hb"><strong>Network</strong> — tap to copy:</p>
-<div class="hb-codewrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre class="hb-code"><code>[network-name]</code></pre></div>
-<p class="hb"><strong>Password</strong> — tap to copy:</p>
-<div class="hb-codewrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre class="hb-code"><code>[wifi-password]</code></pre></div>
-<div class="hb-callout ">📡 If the Wi-Fi is flaky, a phone hotspot is plenty — the build only needs light internet (your AI runs on your Claude login).</div>
-<h2 class="hb">🕘 Schedule</h2>
-<table class="hb-table"><thead><tr><th>Time</th><th>What</th></tr></thead><tbody><tr><td>[10:00]</td><td>Check-in &amp; setup</td></tr><tr><td>[10:30]</td><td>Kickoff</td></tr><tr><td>[10:45]</td><td>Build time</td></tr><tr><td>[1:30]</td><td>Lunch</td></tr><tr><td>[2:00]</td><td>Build time</td></tr><tr><td>[4:30]</td><td>Demos</td></tr></tbody></table>
-<h2 class="hb">🍴 Food &amp; breaks</h2>
-<p class="hb">[Lunch and snacks are provided — details here.]</p>
-<h2 class="hb">🆘 Need help?</h2>
-<p class="hb">Look for the <strong>GrowthX team / mentors</strong> — flag any of us anytime. Stuck on a step? That&#x27;s normal; grab a mentor and we&#x27;ll unblock you fast.</p></div>
+<div class="section-panel" id="sec-logistics"><div class="section-label">On the day</div><h2 class="section-title">Logistics</h2><p class="section-sub">Venue, Wi-Fi, check-in, and what to bring.</p>
+<p class="hb"><em>Organisers: replace the [bracketed] values below with the real details.</em></p>
+
+<div style="background:linear-gradient(135deg,#1e293b,#0f172a);border-radius:20px;padding:32px 36px;margin:18px 0 16px;position:relative;overflow:hidden">
+  <div style="position:absolute;top:-40px;right:-40px;width:200px;height:200px;background:radial-gradient(circle,rgba(37,99,235,.15),transparent);border-radius:50%"></div>
+  <div style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#60a5fa;font-weight:600;margin-bottom:14px">📍 Venue</div>
+  <div style="font-family:'Instrument Serif',serif;font-size:clamp(26px,3.5vw,34px);font-weight:400;color:#fff;line-height:1.2;margin-bottom:8px">[Venue name]</div>
+  <div style="font-size:15px;color:rgba(255,255,255,.55);line-height:1.6;margin-bottom:20px">[Address line 1]<br>[Area, City]</div>
+  <a href="[paste-maps-link]" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;color:#0f172a;background:#fff;border-radius:8px;padding:10px 20px;text-decoration:none">Open in Google Maps &rarr;</a>
+</div>
+
+<div style="background:var(--white);border:1.5px solid var(--line);border-radius:16px;padding:28px 30px;margin-bottom:16px">
+  <div style="font-family:'Instrument Serif',serif;font-size:28px;font-weight:400;color:var(--ink);margin-bottom:20px">Wi-Fi</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+    <div style="background:var(--bg);border-radius:12px;padding:18px 22px;cursor:pointer" onclick="navigator.clipboard.writeText('[network-name]');this.querySelector('.cpb').textContent='Copied!';setTimeout(()=>this.querySelector('.cpb').textContent='Click to copy',1500)">
+      <div style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);font-weight:600;margin-bottom:8px">Network</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:600;color:var(--ink)">[network-name]</div>
+      <div class="cpb" style="font-size:11px;color:var(--faint);margin-top:6px">Click to copy</div>
+    </div>
+    <div style="background:var(--bg);border-radius:12px;padding:18px 22px;cursor:pointer" onclick="navigator.clipboard.writeText('[wifi-password]');this.querySelector('.cpb').textContent='Copied!';setTimeout(()=>this.querySelector('.cpb').textContent='Click to copy',1500)">
+      <div style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);font-weight:600;margin-bottom:8px">Password</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:600;color:var(--ink)">[wifi-password]</div>
+      <div class="cpb" style="font-size:11px;color:var(--faint);margin-top:6px">Click to copy</div>
+    </div>
+  </div>
+</div>
+
+<div style="background:var(--white);border:1.5px solid var(--line);border-radius:16px;padding:28px 30px;margin-bottom:16px">
+  <div style="font-family:'Instrument Serif',serif;font-size:28px;font-weight:400;color:var(--ink);margin-bottom:12px">Check-in</div>
+  <div style="font-family:'Instrument Serif',serif;font-size:36px;font-weight:400;color:var(--blue);margin-bottom:10px">[10:00 AM]</div>
+  <p style="font-size:16px;color:var(--mid);line-height:1.65">The GrowthX team will check you in. Come on time so you don't miss the kickoff.</p>
+</div>
+
+<div style="background:var(--white);border:1.5px solid var(--line);border-radius:16px;padding:28px 30px;margin-bottom:16px">
+  <div style="font-family:'Instrument Serif',serif;font-size:28px;font-weight:400;color:var(--ink);margin-bottom:10px">Getting there</div>
+  <p style="font-size:16px;color:var(--mid);line-height:1.65">[Easily reached by car, auto, metro, or two-wheeler. Parking available at the venue.]</p>
+</div>
+
+<div style="background:var(--white);border:1.5px solid var(--line);border-radius:16px;padding:28px 30px;margin-bottom:8px">
+  <div style="font-family:'Instrument Serif',serif;font-size:28px;font-weight:400;color:var(--ink);margin-bottom:16px">What to bring</div>
+  <div style="display:flex;flex-direction:column;gap:12px">
+    <div style="display:flex;align-items:center;gap:14px;font-size:16px;color:var(--ink)"><span style="width:36px;height:36px;background:var(--blue-l);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0">💻</span><span style="font-weight:500">Laptop + charger (set up &mdash; see Before You Arrive)</span></div>
+    <div style="display:flex;align-items:center;gap:14px;font-size:16px;color:var(--ink)"><span style="width:36px;height:36px;background:var(--blue-l);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0">🪪</span><span style="font-weight:500">Government ID</span></div>
+    <div style="display:flex;align-items:center;gap:14px;font-size:16px;color:var(--ink)"><span style="width:36px;height:36px;background:var(--blue-l);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0">🥤</span><span style="font-weight:500">Water bottle</span></div>
+  </div>
+</div>
+</div>
 <div class="section-panel" id="sec-ideation"><h2 class="section-title">Ideation</h2><p class="section-sub">~15 min · core · done on Claude web.</p><div class="starter"><div class="starter-head">📥 Starter file — give this to Claude / ChatGPT</div><div class="sf-card"><div class="sf-name">IDEATION.md</div><div class="sf-desc">The rules your AI follows for the ideation interview.</div><div class="sf-acts"><button class="sf-btn" onclick="copyFile('IDEATION.md', this)">Copy</button><button class="sf-btn ghost" onclick="downloadFile('IDEATION.md')">Download</button></div></div></div><p class="hb">Decide <strong>who your agent is</strong> — its voice, its humor, how it texts. No code in this phase. <strong>Takes 15–20 minutes.</strong></p>
 <div class="hb-callout ">🌐 Do this on <strong>Claude web (claude.ai) or ChatGPT — not Claude Code.</strong> It keeps your Claude Code usage fresh for the actual build later.</div>
 <h2 class="hb">Steps</h2>
@@ -1610,38 +1641,64 @@ node slack_bot.js</code></pre></div>
 </div>
 </div>
 <script>
+                            not guarantee funding, investment, or hiring.</div>
+                    </div>
+                    <div
+                        style="display:grid;grid-template-columns:56px 1fr;padding:20px 24px;border-bottom:1px solid var(--line);font-size:15px;color:var(--mid);line-height:1.6">
+                        <div style="color:var(--faint);font-size:13px;font-weight:600">10</div>
+                        <div><b style="color:var(--ink)">Liability.</b> You are responsible for your own laptop, data,
+                            code, accounts, and conduct. Back up your work.</div>
+                    </div>
+                    <div
+                        style="display:grid;grid-template-columns:56px 1fr;padding:20px 24px;border-bottom:1px solid var(--line);font-size:15px;color:var(--mid);line-height:1.6">
+                        <div style="color:var(--faint);font-size:13px;font-weight:600">11</div>
+                        <div><b style="color:var(--ink)">Third-party tools.</b> Ringg AI, model APIs, hosting providers
+                            have their own terms. Agreeing to those terms is on you.</div>
+                    </div>
+                    <div
+                        style="display:grid;grid-template-columns:56px 1fr;padding:20px 24px;font-size:15px;color:var(--mid);line-height:1.6">
+                        <div style="color:var(--faint);font-size:13px;font-weight:600">12</div>
+                        <div><b style="color:var(--ink)">Changes to these terms.</b> GrowthX may update these terms
+                            before or during the event.</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script>
         // === SECTION NAVIGATION ===
         function dismissCover() {
             const overlay = document.getElementById('coverOverlay');
             overlay.style.opacity = '0';
             overlay.style.pointerEvents = 'none';
             document.querySelector('.handbook').classList.remove('cover-active');
-            setTimeout(() => { overlay.style.display = 'none' }, 500);
-            goToSection('welcome');
-        }
-        function goToSection(id) {
-            document.querySelectorAll('.section-panel').forEach(p => p.classList.remove('active'));
-            document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
-            const panel = document.getElementById('sec-' + id);
-            if (panel) panel.classList.add('active');
-            const item = document.querySelector('[data-section="' + id + '"]');
-            if (item) item.classList.add('active');
-            // If going back to cover, show overlay
-            if (id === 'cover') {
-                const overlay = document.getElementById('coverOverlay');
-                overlay.style.display = 'flex';
-                overlay.style.opacity = '1';
-                overlay.style.pointerEvents = 'auto';
-                document.querySelector('.handbook').classList.add('cover-active');
-            }
-            window.scrollTo({ top: 0 });
-        }
-        document.querySelectorAll('.sidebar-item').forEach(item => {
-            item.addEventListener('click', () => {
-                if (item.classList.contains('locked')) return;
-                goToSection(item.dataset.section);
+                h += `<th style="text-align:left;vertical-align:top;padding:20px 24px;border-bottom:1px solid rgba(255,255,255,.12);border-right:1px solid rgba(255,255,255,.06);font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.05em;color:rgba(255,255,255,.5);font-weight:500;min-width:320px">${L.n}</th>`;
             });
-        });
+            h += `</tr></thead><tbody>`;
+            RUBRIC.forEach(function (p, ri) {
+                var tb = ri > 0 ? 'border-top:1px solid rgba(255,255,255,.08);' : '';
+                h += `<tr><td style="position:sticky;left:0;z-index:1;background:#0f172a;vertical-align:top;padding:24px 22px;border-right:1px solid rgba(255,255,255,.12);${tb}min-width:220px;width:220px"><div style="font-size:17px;font-weight:700;color:#fff;line-height:1.3;margin-bottom:10px">${p.name}</div><div style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#60a5fa">${p.weight} · max ${p.max}</div></td>`;
+                p.levels.forEach(function (L, idx) {
+                    var isL5 = idx === 4;
+                    h += `<td style="vertical-align:top;padding:24px 24px;border-right:1px solid rgba(255,255,255,.06);${tb}${isL5 ? 'background:rgba(37,99,235,.10);' : ''}min-width:320px"><div style="font-size:15px;font-weight:700;color:#fff;line-height:1.4;margin-bottom:10px">${L.head}</div>`;
+                    if (L.body) h += `<div style="font-size:14px;color:rgba(255,255,255,.62);line-height:1.6">${L.body}</div>`;
+                    if (L.egs && L.egs.length) {
+                        h += `<div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.32);font-weight:500;margin:14px 0 7px">Example${L.egs.length > 1 ? 's' : ''}</div>`;
+                        L.egs.forEach(function (e) { h += `<div style="font-size:13.5px;color:rgba(255,255,255,.45);line-height:1.55;margin-bottom:6px">${e}</div>`; });
+                    }
+                    h += `</td>`;
+                });
+                h += `</tr>`;
+            });
+            h += `</tbody></table></div>`;
+            h += `<div style="background:#0a1226;border-left:3px solid #2563eb;border-radius:0 14px 14px 0;padding:26px 30px;margin-top:30px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#60a5fa;font-weight:600;margin-bottom:12px">Total</div><p style="font-size:18px;color:rgba(255,255,255,.92);line-height:1.6;margin:0">100 points across four weighted parameters. 30 + 30 + 20 + 20.</p></div>`;
+            h += `<div style="background:#1c0d0d;border-left:3px solid #ef4444;border-radius:0 14px 14px 0;padding:26px 30px;margin-top:18px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#f87171;font-weight:600;margin-bottom:14px">Verify before scoring L3 and above</div><p style="font-size:16px;color:rgba(255,255,255,.85);line-height:1.65;margin:0 0 14px">Mocked, sandbox, or staged surfaces cap Job-to-be-done at L3. That is fine and expected in a 3-hour build. L4 and L5 need a production-like or live surface, shown in the demo.</p><p style="font-size:16px;color:rgba(255,255,255,.85);line-height:1.65;margin:0">The voice loop must run live on stage, not from a recording. If you suspect pre-existing code or a company&rsquo;s existing product, flag it. Judges will ask.</p></div>`;
+            root.innerHTML = h;
+        }
+
+        renderScoring();
+
         // === COVER ANIMATION — orb, voice bars, particles, parallax ===
         (function () {
             var canvas = document.getElementById('coverCanvas');
@@ -1708,32 +1765,6 @@ node slack_bot.js</code></pre></div>
                 g.addColorStop(1, 'rgba(125,185,255,0)');
                 ctx.fillStyle = g;
                 for (var bx = pitch / 2; bx < W; bx += pitch) {
-                    var nx = (bx - half) / half;
-                    var env = Math.pow(Math.max(0, Math.cos(nx * 1.5708)), 1.4);
-                    var m = 0.5 + 0.30 * Math.sin(nx * 2.3 + t * 0.8) + 0.20 * Math.sin(nx * 4.0 - t * 0.5);
-                    if (m < 0) m = 0; else if (m > 1) m = 1;
-                    var amp = 4 + env * (8 + m * 54);
-                    ctx.globalAlpha = 0.22 + env * 0.5;
-                    bar(bx - bw / 2, baseY - amp, bw, amp * 2);
-                }
-                ctx.globalAlpha = 1;
-                // particles drifting + gently pulled toward the audio contour
-                for (var i = 0; i < ps.length; i++) {
-                    var p = ps[i];
-                    p.x += p.vx + cx * 0.25; p.y += p.vy;
-                    var target = H * 0.80 + Math.sin(p.x * 0.006 + t * 0.6 + p.ph) * 42 * p.sp;
-                    p.y += (target - p.y) * 0.0008;
-                    if (p.y < -12) { p.y = H + 12; p.x = Math.random() * W; }
-                    if (p.x < -12) p.x = W + 12; if (p.x > W + 12) p.x = -12;
-                    ctx.beginPath();
-                    ctx.arc(p.x + cx * 16 * p.sp, p.y, p.r, 0, Math.PI * 2);
-                    ctx.fillStyle = 'rgba(147,197,253,' + p.a.toFixed(3) + ')';
-                    ctx.fill();
-                }
-                if (!reduce) raf = requestAnimationFrame(frame);
-            }
-            frame();
-        })();
 var STARTER_FILES = {"IDEATION.md": "# Ideation Phase Rules \u2014 Build Your Digital Twin\n\n**Paste this whole file into Claude (claude.ai) or ChatGPT, then say: \"Run my digital-twin interview.\"**\n\nYou (the AI) are running **Phase 1 of a buildathon**. Your job is to learn **how this person texts**,\nthen hand them a finished `PERSONA.md` file, a **name** for their agent, and a **language** pick.\nThis whole phase must take **15\u201320 minutes**. Keep it fast and low-effort for them.\n\n---\n\n## CORE RULES\n\n- **Do NOT write any code.** This phase is only the interview + one output file.\n- **You are building a *digital twin*, not an app** \u2014 an agent that texts the way *this person* texts\n  (their voice, slang, humor), so it can reply as them when they're away.\n- **Ask ONE question at a time. Never send all questions at once.** Send a question, wait for the answer,\n  then send the next. This keeps it light and step-by-step.\n- **Every question is a tick-box.** Show the options with brackets and tell them to **tick one by putting\n  an `x` in the brackets**, like `[x]`, and send it back. Minimal typing \u2014 they just tick and reply.\n- **One question per message.** After they tick an answer, confirm in a few words and move to the next number.\n- **Don't let anyone stall.** If they're unsure, recommend a sensible default, mark it, and move on.\n- **Stay on time.** 10 quick ticks, then generate the file. Don't over-interview.\n\n---\n\n## STEP 1 \u2014 The interview (ask these ONE AT A TIME, in order)\n\nOpen with one line: *\"Quick interview about how you text \u2014 I'll ask one at a time. Just tick an option\n(put an `x` in the brackets) and send it back. Ready? Here's Q1\u2026\"*\n\nThen send **Q1 only**. Wait for the tick. Then send **Q2 only**. And so on.\n\n**Q1 \u2014 Language**\n```\n- [ ] English\n- [ ] Hinglish (Hindi + English in English letters \u2014 \"haan yaar, kal dekhte hai\")\n- [ ] English + another language: ____________\n```\n\n**Q2 \u2014 Tone** (tick up to two)\n```\n- [ ] Casual & friendly\n- [ ] Witty & sarcastic\n- [ ] Calm & thoughtful\n- [ ] High-energy & hype\n```\n\n**Q3 \u2014 Message length**\n```\n- [ ] Short \u2014 a line or two\n- [ ] Medium \u2014 a couple of sentences\n- [ ] Long \u2014 I write paragraphs\n```\n\n**Q4 \u2014 How my messages look**\n```\n- [ ] Mostly lowercase, relaxed, minimal punctuation\n- [ ] Proper capitalisation & punctuation\n- [ ] Stretched words & dots (\"heyyy\", \"noooo\", \"...\")\n```\n\n**Q5 \u2014 Emojis**\n```\n- [ ] Almost never\n- [ ] Sometimes \u2014 a few when they fit\n- [ ] A lot \u2014 they're part of how I talk\n```\n\n**Q6 \u2014 How I greet & what I call people**\n```\n- [ ] \"hey\" / \"heyy\" + \"yaar\" / \"bro\" / \"bhai\"\n- [ ] \"yo\" / \"sup\" + name or nickname\n- [ ] \"hi\" / \"hello\" + their actual name\n- [ ] My own opener: ____________\n```\n\n**Q7 \u2014 My humor** (tick up to two)\n```\n- [ ] Playful roasting / teasing\n- [ ] Dry sarcasm & one-liners\n- [ ] Wholesome & warm\n- [ ] Silly / random energy\n- [ ] I keep it mostly serious\n```\n\n**Q8 \u2014 Topics I light up on** (tick any)\n```\n- [ ] Tech & startups\n- [ ] Movies / sports / pop culture\n- [ ] Life & relationships\n- [ ] Fitness / food / travel\n- [ ] Just vibing, casual chit-chat\n- [ ] Other: ____________\n```\n\n**Q9 \u2014 The agent must NEVER do this** (these are ON by default \u2014 untick only if you disagree)\n```\n- [x] Make firm commitments (meetings, money, big yes/no) \u2014 say \"let me get back on that\"\n- [x] Share private info (address, finances, personal details)\n- [x] Be rude or abusive, even if provoked\n- [x] Fake expertise \u2014 instead say \"let me check and tell you\"\n- [ ] Anything else: ____________\n```\n\n**Q10 \u2014 (Optional but gold) Speak as, + real texts**\n```\nSpeak as:  [ ] he/him   [ ] she/her   [ ] they/them   \u2190 (only needed for Hinglish/gendered verbs)\n\nPaste 2\u20133 real texts you've actually sent (any chat) \u2014 this is what makes it sound like you:\n> 1.\n> 2.\n> 3.\n```\nIf they skip the texts, that's fine \u2014 move on.\n\n---\n\n## STEP 2 \u2014 After the interview, produce the deliverables\n\n### 1. Write `PERSONA.md`\nTurn their answers into the file below. **Keep these exact headings** \u2014 the build phase loads it directly.\nWhere they left something blank, fill the sensible default (e.g. tone \u2192 casual & friendly, language \u2192 English).\n\n```markdown\n# Persona \u2014 [Agent Name] (v0.1)\n\nThis is the \"soul\" of the agent. The building phase loads this into the system prompt\nso the AI talks like me.\n\n## Voice & Language\n- **Language:** \u2026\n- **Tone:** \u2026\n- **Message length:** \u2026\n- **Punctuation/style:** \u2026\n- **Emojis:** \u2026\n- **Grammatical gender (if relevant):** \u2026\n\n## How I Talk to People\n- **Greeting:** \u2026\n- **How I address people:** \u2026\n- **Default energy:** \u2026\n- **Sign-off:** \u2026\n\n## Personality & Humor\n- **Humor style:** \u2026\n- **Topics I light up on:** \u2026\n\n## Behavior Rules (what the twin must NEVER do)\n- \u2026\n\n## Natural Variation (don't sound robotic)\n- Vary openers \u2014 don't start every message the same way.\n- Vary the shape \u2014 sometimes react, sometimes ask, sometimes one short line.\n- Match the other person's energy and language.\n- Don't repeat the same emoji every message; often use none.\n\n## Quick Sample (target output style)\n> them: [example]\n> me: [reply in their voice]\n> them: [example]\n> me: [reply in their voice]\n```\n\nBuild the **Quick Sample** from their real texts in Q10 (or invent 2\u20133 that match their ticks).\nThen tell them: **\"Save this as `PERSONA.md` in your `my-twin` folder.\"**\n\n### 2. Suggest a name (don't block)\nOffer **3 name ideas** that fit their vibe, plus \"\u2026or your own.\" If they don't pick, go with your favourite\nand move on \u2014 they can rename later. They should walk out knowing the name.\n\n### 3. Confirm the language (default Python)\n\"Last thing \u2014 building in **Python** (default, easiest) or **JavaScript**?\" Unsure \u2192 say **Python**, move on.\n\n### 4. Close\n\"You're done with ideation \u2705 \u2014 you've got `PERSONA.md`, a name (**[name]**), and a language\n(**[lang]**). Take these into the build and start.\"\n\n---\n\n## FORBIDDEN\n- Don't write code.\n- Don't send all the questions at once \u2014 **one question per message**, wait for the tick.\n- Don't leave them without a saved `PERSONA.md`, a name, and a language.\n- Don't block them on a perfect name \u2014 suggest and move on.\n", "BUILDING.md": "# Building Phase Rules \u2014 Build Your Digital Twin\n\n**Paste this whole file into Claude Code** (in your `my-twin` folder), then say:\n*\"Read my PERSONA.md and help me build my agent \u2014 follow these rules, start with Iteration 0.\"*\n\nYou (the AI) are running **Phase 2 of a buildathon**: help the person build a personal AI agent\n(a \"digital twin\") that chats in their voice. Their voice is described in `PERSONA.md`.\n\n## THE BRAIN \u2014 how the agent thinks (most important rule)\n\nThe agent's \"brain\" is the **Claude CLI in print mode** \u2014 **NOT** the Anthropic API, and **NEVER** an API key.\n\n- The person is already signed into Claude Code, so the command `claude -p` answers prompts using their\n  existing subscription \u2014 **no API key, no extra cost**. (An API key costs money and they don't have one.)\n- So the agent's code must call `claude -p` as a **subprocess**: build ONE prompt from `PERSONA.md`\n  + the conversation so far, send it in, and read the reply from standard output.\n\nPython:\n```python\nimport subprocess\nreply = subprocess.run(\"claude -p --model sonnet\",\n    input=prompt, shell=True, capture_output=True, text=True).stdout.strip()\n```\n\nNode.js:\n```javascript\nconst { execSync } = require(\"child_process\");\nconst reply = execSync(\"claude -p --model sonnet\", { input: prompt, encoding: \"utf8\" }).trim();\n```\n\n- **Codex users:** use `codex exec -` instead of `claude -p --model sonnet`.\n- **Never** import the `anthropic` / `openai` SDK or read an API key. If you're about to, stop and use the CLI subprocess instead.\n\n## PRE-CHECK\nBefore building any feature, verify:\n- \"Is this feature in your IDEATION.md?\"\n- \"Which iteration are we on?\"\n- If out of scope: \"That's a later iteration or v0.2. Let's finish the current one first.\"\n\n## ITERATION MODEL\n\n**For this project (the digital twin):**\n- **Iteration 0** \u2014 a terminal chat loop: type a message \u2192 it replies in your voice via `claude -p` \u2192 repeat (Ctrl+C to quit).\n- **Iteration 1** \u2014 a cleaner chat app (labelled lines like `You:` / agent name), still no memory.\n- **Iteration 2** \u2014 add memory (the first *capability*) so it remembers earlier messages in the chat.\n\n### ITERATION 0 (20 min max)\nYour \"magic moment\" \u2014 the single most important feature.\n- Strictly terminal \u2014 NO UI\n- Create a script file (e.g., `core.js`, `main.py`) that can be run with `node core.js` or `python main.py`\n- Must produce visible output in terminal when run\n- If this takes >20 min, scope is too big \u2014 cut something\n\nIf Iteration 0 is taking too long:\n\"This is taking more than 20 minutes. Your scope is too big for a buildathon. What can we cut to get the core working faster?\"\n\n### ITERATION 1, 2, 3... (~1 hr each, \u00b130 min flexible)\nOne feature per iteration, end-to-end. Within each iteration, use layers:\n1. **Logic** \u2014 Core functionality, testable in terminal\n2. **UI** \u2014 Basic interface to interact with the logic\n3. **Polish** \u2014 Better messages, minor styling (skip if behind)\n\nTarget: 2\u20133 complete iterations.\n\n## BUILDING BEHAVIOR\n\n### 1. Plan Before Code\nFor any feature, output a mini-plan first:\n\n```\n\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\nITERATION [N]: [Feature Name]\n\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\n\nWHAT IT DOES:\n[One sentence]\n\nFILES TO CREATE/MODIFY:\n- [file 1]: [what changes]\n- [file 2]: [what changes]\n\nLAYERS:\n1. Logic: [what to build first]\n2. UI: [what interface]\n3. Polish: [what improvements, if time]\n\nPOTENTIAL ISSUES:\n- [Thing that might go wrong]\n\n\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\nProceed? (y/n)\n```\n\nWait for confirmation before writing code.\n\n### 2. Small Testable Chunks\nWrite code in pieces that can be tested immediately. After each piece:\n\n\"Test this now. Does it work?\n- If yes \u2192 Let's commit and continue\n- If no \u2192 What's the error?\"\n\nNever write more than 30\u201350 lines without a test checkpoint.\n\n### 3. Explain As You Go\nUser must understand every line.\n\n**Good:**\n```js\n// Check if user exists before accessing their data\n// The ?. is optional chaining - returns undefined instead of crashing\nconst userName = user?.name || 'Guest'\n```\n\n**Bad:**\n```js\nconst userName = user?.name || 'Guest'\n```\n\nIf something is complex, either add a comment explaining it, simplify it, or ask: \"Do you understand what this does?\"\n\n### 4. Resist Scope Creep\nWhen user says \"can we also add...\" or \"what if we...\":\n\n\"That's a later iteration. I've noted it. Let's finish Iteration [N] first.\"\n\n### 5. Checkpoint = Auto-Commit + Documentation\nWhen user says \"checkpoint\" (or similar), commit for them with a detailed message:\n\n```\ngit add .\ngit commit -m \"feat: [short description]\n\n- What: [what was built]\n- How: [approach taken]\n- Status: [working/partial/needs testing]\"\n```\n\nUse conventional commits: `feat:` (new feature / iteration complete), `fix:` (bug fix), `wip:` (work in progress save). After committing, confirm:\n\n\"Checkpoint saved: [commit hash]. This is your safe point. What's next?\"\n\nThe git history becomes the project documentation \u2014 no separate changelog needed.\n\n## RESPONSE FORMAT\n- **[ITERATION N - LAYER]** \u2014 Brief description\n- **[WHAT WE'RE BUILDING]** \u2014 One sentence\n- **[CODE]** \u2014 The actual code, with comments\n- **[TEST IT]** \u2014 How to verify this works\n- **[NEXT]** \u2014 What to do after this works\n- **[COMMIT]** \u2014 Reminder to commit\n\n## FORBIDDEN\n- Rewrite entire files (suggest targeted edits)\n- Add features not in IDEATION.md\n- Install dependencies without explaining why\n- Create multiple user types\n- Build authentication from scratch\n- Add \"nice to have\" features\n- Optimize before it works\n- Add error handling beyond console.log\n- Add loading states / animations\n- Make it mobile responsive\n- Skip to UI before logic works\n\n## ALLOWED SHORTCUTS\nActively encourage these for v0.1:\n- Hardcoded credentials (admin/admin123)\n- Console.log for error handling\n- Fake data in arrays\n- Desktop only\n- Basic styling (no custom CSS)\n- \"Skip login\" button\n- alert() instead of toasts\n- Page refresh instead of state updates\n\n## ITERATION 0 EXAMPLES\n\n**Good Iteration 0 (for the digital twin):**\n- `python core.py` \u2192 you type a message, it replies in your voice via `claude -p`, loops until Ctrl+C\n- `node core.js` \u2192 the same, in Node\n\n**Bad Iteration 0 (too big):**\n- A web or chat UI (that comes later)\n- Saving/remembering conversations (that's a capability \u2014 Iteration 2)\n- Connecting to Slack/Discord (that's Phase 3)\n"};
 
 function copyCode(btn){
